@@ -1,0 +1,435 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="Gail">
+  
+  
+  
+  
+    <meta name="description" content="1.初始化
+下载Git终端
+初始化一个git仓库  $ git init (创建文件readme.txt)
+将文件添加到暂存区  $ git add readme.txt (可以出现多个add)
+提交  $ git commit -m “提交说明(备注)”
+
+2.掌握工作区的状态
+掌握工作区的状态  $ git status
+查看修改内容  $ git diff
+
+3.历史记录
+记录  $ ...">
+  
+  <title>Git [ xxGail's Blog ]</title>
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+  
+    <div class="item next">
+      <a href="/2017/11/20/php笔记/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        php笔记
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="http://ozp0vvyub.bkt.clouddn.com/blog/171120/2m4Iee8bgm.jpg?imageslim"/>
+          <div id="homelink">xxGail's Blog</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article id="post">
+    <h1>Git</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">Created at 2017-11-20</span>
+      
+        <span id = "post-title-updated">Updated at 2017-11-20</span>
+      
+      
+      <span id = "post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/编程/">编程</a>
+      
+      </span>
+      
+      
+      <span id = "post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/git/">git</a>
+      
+      </span>
+      
+    </p>
+    
+    <h3 id="1-初始化"><a href="#1-初始化" class="headerlink" title="1.初始化"></a>1.初始化</h3><ol>
+<li>下载Git终端</li>
+<li>初始化一个git仓库  <strong>$ git init</strong> (创建文件readme.txt)</li>
+<li>将文件添加到暂存区  <strong>$ git add readme.txt</strong> (可以出现多个add)</li>
+<li>提交  <strong>$ git commit -m “提交说明(备注)”</strong></li>
+</ol>
+<h3 id="2-掌握工作区的状态"><a href="#2-掌握工作区的状态" class="headerlink" title="2.掌握工作区的状态"></a>2.掌握工作区的状态</h3><ol>
+<li>掌握工作区的状态  <strong>$ git status</strong></li>
+<li>查看修改内容  <strong>$ git diff</strong></li>
+</ol>
+<h3 id="3-历史记录"><a href="#3-历史记录" class="headerlink" title="3.历史记录"></a>3.历史记录</h3><ol>
+<li>记录  <strong>$ git log</strong> (log中的一大串类似于乱码的东西是commit id)</li>
+<li>回到之前的版本  <strong>$ git reset –hard HEAD^</strong> (HEAD后面有几个^就是倒数第几个版本，往上一百个版本是 HEAD~100)</li>
+<li>退回后log发送变化，则可以根据 <strong>$ git reset –hard commit id</strong> 来修改</li>
+<li>预览此刻的readme.txt  <strong>$ cat readme.txt</strong></li>
+<li>记录每次命令，可以用来查看commit id <strong>$ git reflog</strong></li>
+</ol>
+<h3 id="4-撤回修改"><a href="#4-撤回修改" class="headerlink" title="4.撤回修改"></a>4.撤回修改</h3><ol>
+<li>若只在工作区 <strong>$ git checkout –readme.txt</strong></li>
+<li>若提交到暂存区  先用<strong>$ git reset HEAD readme.txt</strong> ,再用1即可</li>
+<li>若提交到版本区，则用版本回退  <strong>$ git reset –hard HEAD^</strong></li>
+</ol>
+<h3 id="5-删除"><a href="#5-删除" class="headerlink" title="5.删除"></a>5.删除</h3><ol>
+<li>在文件夹中删除或用终端 $rm 之后</li>
+<li>误删：从版本库中恢复  <strong>$ git checkout –readme.txt</strong></li>
+<li>彻底删除 <strong>$ git rm readme.txt</strong></li>
+</ol>
+<h3 id="6-远程关联GitHub和码云"><a href="#6-远程关联GitHub和码云" class="headerlink" title="6.远程关联GitHub和码云"></a>6.远程关联GitHub和码云</h3><ol>
+<li>新建同名项目 learngit</li>
+<li>命令 | 作用<br>—|—<br>$ git remote add github git@github.com:Gail-Guo/learngit.git | GitHub<br>$ git remote rm github | GitHub删除关联<br>$ git push github master(第一次更新在push后加-u) | Github更新<br>$ git remote add gitee git@gitee.com:isgail/learn.git | 码云<br>$ git remote rm gitee | 码云删除关联<br>$ git push gitee master | 码云更新</li>
+</ol>
+<h3 id="7-从GitHub上克隆"><a href="#7-从GitHub上克隆" class="headerlink" title="7.从GitHub上克隆"></a>7.从GitHub上克隆</h3><ol>
+<li><strong>$ git clone git@github.com:Gail-Guo/项目.git</strong></li>
+</ol>
+<h3 id="8-分支"><a href="#8-分支" class="headerlink" title="8.分支"></a>8.分支</h3><ol>
+<li>创建分支并合并</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$ git checkout -b dev</td>
+<td>创建dev分支并切换</td>
+</tr>
+<tr>
+<td>$ git branch dev</td>
+<td>创建分支</td>
+</tr>
+<tr>
+<td>$ git checkout dev</td>
+<td>切换到dev</td>
+</tr>
+<tr>
+<td>$ git branch</td>
+<td>查看当前分支</td>
+</tr>
+<tr>
+<td>$ git merge dev</td>
+<td>合并到master(先切换到master)</td>
+</tr>
+<tr>
+<td>$ git branch -d dev</td>
+<td>删除分支</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>产生冲突可以修改之后再提交</li>
+<li><strong>$ git log –graph</strong> 可以看到分支合并图</li>
+<li>禁用fast forward 的参数 –no-f</li>
+</ol>
+<h3 id="9-bug"><a href="#9-bug" class="headerlink" title="9.bug"></a>9.bug</h3><ol>
+<li>修复bug时，会通过建立新的bug分支进行修复，然后合并删除分支</li>
+<li>将当前工作储藏起来 <strong>$ git stash</strong></li>
+<li>恢复1 <strong>$ git stash apply –&gt; $ git stash drop</strong></li>
+<li>恢复2 <strong>$ git stash pop</strong></li>
+<li>查看工作现场 <strong>$ git stash list</strong></li>
+<li>丢弃一个未合并的分支，强行删除 <strong>$ git branch -D dev</strong></li>
+</ol>
+<h3 id="10-标签"><a href="#10-标签" class="headerlink" title="10.标签"></a>10.标签</h3><ol>
+<li>创建tag <strong>$ git tag V1.0</strong></li>
+<li>查看 <strong>$ git tag</strong></li>
+<li>查看tag具体信息 <strong>$ git show V1.0</strong></li>
+<li>删除 <strong>$ git tag -d V1.0</strong></li>
+<li>推送到GitHub <strong>$ git push github –tags</strong></li>
+<li>从远程删除 <strong>$ git push github:refs/tags/V1.0</strong></li>
+</ol>
+<h3 id="11-配置别名"><a href="#11-配置别名" class="headerlink" title="11.配置别名"></a>11.配置别名</h3><ol>
+<li>$ git config –global alias.别名 原命令</li>
+</ol>
+<h3 id="12"><a href="#12" class="headerlink" title="12."></a>12.</h3><p><img src="http://note.youdao.com/noteshare?id=f32d02f2663068d52c260a6f70d18d00" alt="image"></p>
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-初始化"><span class="toc-text">1.初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-掌握工作区的状态"><span class="toc-text">2.掌握工作区的状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-历史记录"><span class="toc-text">3.历史记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-撤回修改"><span class="toc-text">4.撤回修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-删除"><span class="toc-text">5.删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-远程关联GitHub和码云"><span class="toc-text">6.远程关联GitHub和码云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-从GitHub上克隆"><span class="toc-text">7.从GitHub上克隆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-分支"><span class="toc-text">8.分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-bug"><span class="toc-text">9.bug</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-标签"><span class="toc-text">10.标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-配置别名"><span class="toc-text">11.配置别名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12"><span class="toc-text">12.</span></a></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+
+  
+
+  
+    <a href="/2017/11/20/php笔记/" class="next">Next post php笔记 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by Gail using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://ozp0vvyub.bkt.clouddn.com/blog/171120/2m4Iee8bgm.jpg?imageslim">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/xxgail">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://www.zhihu.com/people/gai-zi-gu-niang">
+        
+          <i class="icon iconfont zhihu">&#xe60b;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://weibo.com/3622325845/profile?topnav=1&wvr=6">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+    
+      backgroundImages.push('http://ozp0vvyub.bkt.clouddn.com/blog/171120/g3I4c2K3mk.jpg?imageslim');
+    
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["slideLeft2","slideRight2","flash2"],"timer":true,"delay":5000,"shuffle":true,"count":28};
+var unsplashConfig = {"gravity":"north"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+  turnoffBackgroundImage = true;
+
+
+var backgroundColor = "";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
+</body>
+</html>
+

@@ -1,0 +1,1289 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="Gail">
+  
+  
+  
+  
+    <meta name="description" content="第一章 基本结构1.目录结构：    project  应用部署目录    ├─application           应用目录（可设置）    │  ├─common             公共模块目录（可更改）    │ ├─admin              后台目录    │  ├─index              前台目录(可更改)    │  │  ├─config....">
+  
+  <title>ThinkPHP5.0笔记 [ xxGail's Blog ]</title>
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+  
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+    <div class="item prev">
+      <a href="/2017/11/20/web前端/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        web前端
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/2017/11/20/hexo建立博客/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        hexo建立博客
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="http://ozp0vvyub.bkt.clouddn.com/blog/171120/2m4Iee8bgm.jpg?imageslim"/>
+          <div id="homelink">xxGail's Blog</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">Home</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">Archives</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">Tags</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/categories">Categories</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article id="post">
+    <h1>ThinkPHP5.0笔记</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">Created at 2017-11-20</span>
+      
+        <span id = "post-title-updated">Updated at 2017-11-20</span>
+      
+      
+      <span id = "post-title-categories">Category
+      
+      
+        
+        
+        <a href="/categories/编程/">编程</a>
+      
+      </span>
+      
+      
+      <span id = "post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/php/">php</a>
+      
+        
+          /
+        
+        
+        <a href="/tags/框架/">框架</a>
+      
+      </span>
+      
+    </p>
+    
+    <p>第一章 基本结构<br>1.目录结构：<br>    project  应用部署目录<br>    ├─application           应用目录（可设置）<br>    │  ├─common             公共模块目录（可更改）<br>    │ ├─admin              后台目录<br>    │  ├─index              前台目录(可更改)<br>    │  │  ├─config.php      模块配置文件<br>    │  │  ├─common.php      模块函数文件<br>    │  │  ├─controller      控制器目录<br>    │  │  ├─model           模型目录<br>    │  │  ├─view            视图目录<br>    │  │  └─ …            更多类库目录<br>    │  ├─command.php        命令行工具配置文件<br>    │  ├─common.php         应用公共（函数）文件<br>    │  ├─config.php         应用（公共）配置文件<br>    │  ├─database.php       数据库配置文件<br>    │  ├─tags.php           应用行为扩展定义文件<br>    │  └─route.php          路由配置文件<br>    ├─extend                扩展类库目录（可定义）<br>    ├─public                静态资源和入口文件<br>    │  ├─static             静态资源存放目录(css,js,image)<br>    │  ├─index.php          应用入口文件<br>    │  ├─router.php         快速测试文件<br>    │  └─.htaccess          用于 apache 的重写<br>    ├─runtime               网站运行临时目录（可写，可设置）<br>    ├─vendor                第三方类库目录（Composer）<br>    ├─thinkphp              框架系统目录<br>    │  ├─lang               语言包目录<br>    │  ├─library            TP框架核心类库目录<br>    │  │  ├─think           Think 类库包目录<br>    │  │  └─traits          系统 Traits 目录<br>    │  ├─tpl                系统模板目录<br>    │  ├─.htaccess          用于 apache 的重写<br>    │  ├─.travis.yml        CI 定义文件<br>    │  ├─base.php           基础定义文件<br>    │  ├─composer.json      composer 定义文件<br>    │  ├─console.php        控制台入口文件<br>    │  ├─convention.php     惯例配置文件<br>    │  ├─helper.php         助手函数文件（可选）<br>    │  ├─LICENSE.txt        授权说明文件<br>    │  ├─phpunit.xml        单元测试配置文件<br>    │  ├─README.md          README 文件<br>    │  └─start.php          框架引导文件<br>    ├─build.php             自动生成定义文件（参考）<br>    ├─composer.json         composer 定义文件<br>    ├─LICENSE.txt           授权说明文件<br>    ├─README.md             README 文件<br>    ├─think                 命令行入口文件</p>
+<p>2.URL解析<br>http://    www.tp5.com   /index.php     /Index    /Index      /index<br>协议         域名            入口文件      模块       控制器     方法</p>
+<p>第二章 初步了解<br>1.入口文件<br>1.目录：www/tp5/public/index.php<br>2.作用：负责整个tp的请求<br>2.应用<br>1.目录：www/tp5/application<br>2.作用：一个应用代表一个网站<br>3.模块（以前台为例）<br>1.目录：www/tp5/application/Index<br>2.作用：网站所有的前台相关都与其有关<br>3.新建后台模块：<br>1.在application下新建一个admin文件夹<br>2.在admin下创建model，View，controller文件夹<br>3.在controller文件夹下新建控制器（参照6）<br>4.控制器<br>1.目录：www/tp5/application/Index/controller<br>2.作用：书写业务逻辑<br>3.新建控制器（前台</p>
+<p>1.在前台控制器目录下新建User.php<br>2.在控制器中书写代码<br>3.地址栏访问     www.tp5.com/index.php/Index/User/index<br>4.注意：<br>1.必须声明命名空间<br>2.文件名大写，文件夹小写<br>3.类名与文件名一致<br>5.操作（方法）<br>1.操作地址：<br>操作一般都在控制器的文件中<br>2.新建一个操作（前台<br>1.打开前台index控制器 www/tp5/application/Index/controller/index.php<br>2.在控制器中新建一个方法(test<br>3.地址栏访问<br>6.模型<br>1.目录：www/tp5/application/index/model<br>2.作用：负责数据库相关的处理<br>7.视图<br>1.目录：www/tp5/application/index/view<br>2.作用：页面展示<br>8.命名空间<br>1.与目录有关<br>9.跨模块/控制器调用<br>9.1.使用命名空间</p>
+<p>9.2.使用新的命名空间</p>
+<p>9.3.使用controller方法</p>
+<p>10.调用方法<br>10.1.调用当前控制器的方法</p>
+<p>10.2.调用其他控制器中的方法</p>
+<p>10.3.调用跨模块系统方法</p>
+<p>第三章 TP5配置<br>1.基本配置.<br>1.1.配置方式（数组）<br>return [<br>    // 数据库类型<br>    ‘type’            =&gt; ‘mysql’,<br>    // 服务器地址<br>    ‘hostname’        =&gt; ‘127.0.0.1’,<br>];</p>
+<p>1.2.配置分类<br>1.2.1.惯例配置（一般不要修改<br>1）目录：D:\wamp\www\tp5\thinkphp\convention.php<br>1.2.2.应用配置<br>1）目录：D:\wamp\www\tp5\application\config.php<br>1.2.3.扩展配置<br>1）作用：其实就是对配置文件进行分目录的管理<br>2）目录：D:\wamp\www\tp5\application\database.php<br>  D:\wamp\www\tp5\application\extra\用户可以自定义配置文件<br>3）读取配置：（database中的<br>echo config(‘database.password’);<br>echo config(‘database’);//配置文件的名字.配置名称<br>1.2.4.场景配置<br>1）解决问题<br>开发过程中可能在不同环境下进行开发<br>2）如何使用<br>1、修改配置（D:\wamp\www\tp5\application\config.php）<br>    // 应用模式状态<br>    ‘app_status’             =&gt; ‘home’,（或修改为office）<br>2、新建home.php进行配置（D:\wamp\www\tp5\application\extra\）<br>1.2.5.模块配置<br>1）解决问题<br>每一个模块都有自己特有的配置<br>2）如何使用（前台<br>1、在前台目录下新建config.php进行配置<br>1.2.6.动态配置<br>1）如何配置</p>
+<p>1.3.读取配置<br>1）如果配置项存在直接输出，不存在返回NULL。config参数为空时读取所有配置</p>
+<p>2）获取数组中的配置信息</p>
+<p>1.4.系统类<br>1.目录：D:\wamp\www\tp5\thinkphp\library\think<br>Config 设置和获取配置文件<br>1.5 系统方法<br>1.目录：D:\wamp\www\tp5\thinkphp\helper.php<br>Controller 实例化控制器<br>action 调试模块的操作方法<br>config 设置和获取配置<br>dump 打印数据<br>1.6 配置文件之间的加载顺序<br>1）优先级<br>动态配置&gt;模块配置&gt;场景配置&gt;扩展配置&gt;应用配置&gt;惯例配置<br>2）加载顺序<br>惯例配置-&gt;应用配置-&gt;扩展配置-&gt;场景配置-&gt;模块配置-&gt;动态配置<br>3）实现原理<br>array_merge() 后面加载的数据对前面加载的数据进行同名覆盖<br>1.7环境变量配置<br>1）TP5.0支持环境变量配置<br>2）设置环境变量配置<br>1、打开网站根目录 新建.env<br>2、书写环境设置（不能写中文，会报错）</p>
+<p>3）读取环境配置</p>
+<p>4）如何使用<br>打开任意配置文件</p>
+<p>第四章 TP5.0 路由<br>1.路由<br>1.1路由的作用：<br>1.简化URL地址<br>2.有利于搜索引擎优化<br>1.2入口文件<br>1.2.1.前后台分离<br>1）在网站public目录下新建一个后台入口文件admin.php<br>2）打开admin.php<br>            &lt;?php<br>            // 定义应用目录<br>            define(‘APP_PATH’, <strong>DIR</strong> . ‘/../application/‘);<br>            // 加载框架引导文件<br>            require <strong>DIR</strong> . ‘/../thinkphp/start.php’;<br>1.2.2.绑定模块<br>    1）实现功能<br>        index.php 这个入口文件 只能去前台模块<br>        admin.php 这个入口文件 只能去后台模块 #建议后台的入口文件稍微复杂一些<br>    2）如何实现<br>        在入口文件中分别定义<br>      define(“BIND_MODULE”,’index’); # 绑定前台模块<br>        define(“BIND_MODULE”,’admin’); # 绑定后台模块<br>    3）URL地址发生改变<br>        1、入口绑定之前<br>            <a href="http://www.tp.com/admin.php/模块/控制器/方法" target="_blank" rel="noopener">http://www.tp.com/admin.php/模块/控制器/方法</a><br>        2、入口绑定之后<br>            <a href="http://www.tp.com/admin.php/控制器/方法" target="_blank" rel="noopener">http://www.tp.com/admin.php/控制器/方法</a></p>
+<p>1.2.3隐藏入口文件<br>    1）开启apache的重写(C:\AppServ\Apache24\conf\httpd.conf)</p>
+<pre><code># 把注释开启
+LoadModule rewrite_module modules/mod_rewrite.so
+</code></pre><p>2）设置访问权限 (C:\AppServ\Apache24\conf\extra\httpd-vhosts.conf)</p>
+<pre><code>&lt;VirtualHost *:80&gt;
+    DocumentRoot &quot;C:\AppServ\www\tp5\public&quot;
+    ServerName www.tp5.com
+    &lt;Directory &quot;C:\AppServ\www\tp5\public&quot;
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</code></pre><p>3）入口文件,在网站public目录下新建.htaccess 文件</p>
+<pre><code>&lt;IfModule mod_rewrite.c&gt;
+  Options +FollowSymlinks -Multiviews
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+&lt;/IfModule&gt;
+</code></pre><p>4）重启服务</p>
+<p>5）url地址变化<br>            1、隐藏之前<br>                <a href="http://www.tp.com/index.php/Index/test" target="_blank" rel="noopener">http://www.tp.com/index.php/Index/test</a><br>            2、隐藏之后<br>                <a href="http://www.tp.com/Index/test" target="_blank" rel="noopener">http://www.tp.com/Index/test</a><br>1.3 Tp5.0路由学习注意:<br>    1、支持三种方式的URL解析规则<br>    2、路由只针对应用，不针对模块，因此路由的设置也是针对应用下面的所有模块。<br>    3、关闭后台模块,在后台入口文件(C:\AppServ\www\tp5\public\admin.php)<br>        // 关闭admin模块的路由<br>        // 必须写到 加载框架引导文件 之后否则报错<br>        \think\App::route(false);<br>1.4路由模式（默认是混合模式）<br>1.4.1.普通模式<br>    a、定义<br>        关闭路由，完全使用默认的 PATH_INFO 方式URL：<br>    b、形式<br>        <a href="http://www.tp.com/admin.php/index/index" target="_blank" rel="noopener">http://www.tp.com/admin.php/index/index</a><br>    c、如何设置（config.php）<br>        // 是否开启路由<br>        ‘url_route_on’           =&gt; false,<br>        // 是否强制使用路由<br>        ‘url_route_must’         =&gt; false,<br>1.4.2.混合模式<br>    a、定义:<br>            开启路由，并使用路由定义+默认 PATH_INFO 方式的混合<br>    b、如何设置<br>        // 是否开启路由<br>        ‘url_route_on’           =&gt; true,<br>        // 是否强制使用路由<br>        ‘url_route_must’         =&gt; false,<br>1.4.3强制模式<br>    1、定义:<br>            开启路由，并设置必须定义路由才能访问<br>        2、如何设置<br>            // 是否开启路由<br>            ‘url_route_on’           =&gt; true,<br>            // 是否强制使用路由<br>            ‘url_route_must’         =&gt; true,<br>1.5设置路由-动态单个注册<br>1.5.1设置路由格式<br>Route::rule(‘路由表达式’,’路由地址’,’请求类型’,’路由参数（数组）’,’变量规则（数组）’)<br>1.5.2设置路由文件<br>    C:\AppServ\www\tp5\application\route.php<br>1.5.3如何设置<br>    // 引入系统类<br>    use think\Route;<br>        // 定义路由规则<br>        // 设置路由之后，就不能使用pathinfo访问了<br>        // 注册路由 访问到Index模块index控制器index方法<br>        Route::rule(‘/‘,’index/index/index’);<br>        // 注册路由test 访问到Index模块index控制器test方法<br>        Route::rule(‘test’,’index/index/test’);<br>1.5.4路由的形式<br>    1、静态地址路由<br>            // 注册路由test 访问到Index模块index控制器test方法<br>            Route::rule(‘test’,’index/index/test’);<br>        2、路由带参数<br>            // 注册带参数路由<br>            // <a href="http://www.tp.com/couser/1" target="_blank" rel="noopener">http://www.tp.com/couser/1</a><br>        // <a href="http://www.tp.com/index/index/index/id/1" target="_blank" rel="noopener">http://www.tp.com/index/index/index/id/1</a><br>        Route::rule(‘course/:id’,’index/index/course’);<br>            // 如果路由设置两个参数，必须带两个参数<br>            Route::rule(‘time/:year/:month’,’index/index/shijian’);<br>        3、可选参数路由<br>            // <a href="http://www.tp.com/time/2017" target="_blank" rel="noopener">http://www.tp.com/time/2017</a><br>            // <a href="http://www.tp.com/time/2017/8" target="_blank" rel="noopener">http://www.tp.com/time/2017/8</a><br>            Route::rule(‘time/:year/[:month]’,’index/index/shijian’);<br>        4、全动态路由(不建议大家使用)<br>            Route::rule(‘:a/:b’,’index/index/dongtai’);<br>        5、完全匹配路由<br>            // <a href="http://www.tp.com/test1" target="_blank" rel="noopener">http://www.tp.com/test1</a> #可以成功访问<br>            // <a href="http://www.tp.com/test1/1" target="_blank" rel="noopener">http://www.tp.com/test1/1</a> #不能访问<br>            Route::rule(‘test1$’,’Index/index/test1’);<br>        6、路由额外带参数<br>            Route::rule(‘test2’,’Index/index/test2?id=10&amp;name=zhangsan’);<br>1.5.5设置请求类型<br>    1、TP中请求类型<br>            get、post、put、delete<br>        2、Route::rule() 默认支持所有请求类型<br>        3、设置各种请求<br>            // 支持get请求<br>                Route::rule(‘type’,’Index/index/type’,’get’);<br>                // Route::get(‘type’,’Index/index/type’);<br>            // 支持post请求<br>                // Route::rule(‘type’,’Index/index/type’,’post’);<br>                // Route::post(‘type’,’Index/index/type’);<br>            // 同时支持get和post<br>                // Route::rule(‘type’,’Index/index/type’,’get|post’);<br>            // 支持所有路由<br>                // Route::rule(‘type’,’Index/index/type’,’ <em> ‘);<br>                // Route::any(‘type’,’Index/index/type’);<br>            // 支持put请求<br>                Route::rule(‘type’,’Index/index/type’,’put’);<br>                Route::put(‘type’,’Index/index/type’);<br>            // 支持delete请求<br>                Route::rule(‘type’,’Index/index/type’,’delete’);<br>                Route::delete(‘type’,’Index/index/type’);<br>        4、如何模拟put和delete请求<br>            <form action="type" method="post"><br>                <p><br>                    <input type="hidden" name="_method" value="PUT">*</p></form></em><br>                    <input type="text" name="name" id=""><br>                </p><br>                <p><br>                    <input type="submit" value="提交"><br>                </p><br>            <br>1.6设置路由-动态批量注册<br>    1、基本格式<br>        Route::rule([<br>        ‘路由规则1’=&gt;’路由地址和参数’,<br>        ‘路由规则2’=&gt;[‘路由地址和参数’,’匹配参数（数组）’,’变量规则（数组）’]<br>        ],’’,’请求类型’,’匹配参数（数组）’,’变量规则’);<br>    2、使用<p></p>
+<pre><code>Route::rule([
+    &quot;test&quot;=&gt;&quot;index/index/test&quot;,
+    &quot;course/:id&quot;=&gt;&quot;index/index/course&quot;
+],&apos;&apos;,&apos;get&apos;);
+
+Route::get([
+    &quot;test&quot;=&gt;&quot;index/index/test&quot;,
+    &quot;course/:id&quot;=&gt;&quot;index/index/course&quot;
+]);
+</code></pre><p>1.7设置路由-配置文件批量注册<br>    return [<br>        “test”=&gt;”index/index/test”,<br>        “course/:id”=&gt;”index/index/course”<br>    ];</p>
+<p>1.8变量规则</p>
+<pre><code>// Route::rule(&apos;路由表达式&apos;,&apos;路由地址&apos;,&apos;请求类型&apos;,&apos;路由参数（数组）&apos;,&apos;变量规则（数组）&apos;);
+// 设置路由参数id必须是数字，必须1-3位
+Route::rule(&quot;course/:id&quot;,&quot;index/index/course&quot;,&apos;get&apos;,[],[&apos;id&apos;=&gt;&apos;\d{1,3}&apos;]);
+</code></pre><p>1.9路由参数</p>
+<pre><code>// Route::rule(&apos;路由表达式&apos;,&apos;路由地址&apos;,&apos;请求类型&apos;,&apos;路由参数（数组）&apos;,&apos;变量规则（数组）&apos;);
+Route::rule(&quot;course/:id&quot;,&quot;index/index/course&quot;,&apos;get&apos;,[&apos;method&apos;=&gt;&apos;get&apos;,&apos;ext&apos;=&gt;&apos;html&apos;],[&apos;id&apos;=&gt;&apos;\d{1,3}&apos;]);
+// 路由参数method 请求方式必须是get
+// 路由参数ext 主要设置路由的后缀
+</code></pre><p>1.10资源路由<br>    1、声明<br>        Route::resource(‘blog’,’index/blog’);<br>    2、会自动注册七个路由规则</p>
+<p>#后台展示</p>
+<p>#添加页面</p>
+<p>#增加操作</p>
+<p>#修改操作</p>
+<p>#更新操作</p>
+<p>#删除操作</p>
+<p>1.11.设置快捷路由<br>    1、声明<br>        Route::Controller(‘blog’,’index/blog’);<br>    2、控制器中</p>
+<pre><code>namespace app\index\controller;
+class Blog{
+    public function  getindex(){
+        echo &quot;我是bolg控制器index方法&quot;;
+    }
+    public function geta(){
+        echo &quot;AAAAAAAA&quot;;
+    }
+}
+</code></pre><p>3、URL访问<br>        <a href="http://www.tp.com/blog/a" target="_blank" rel="noopener">http://www.tp.com/blog/a</a><br>        <a href="http://www.tp.com/blog/index" target="_blank" rel="noopener">http://www.tp.com/blog/index</a></p>
+<p>1.12.生成url地址<br>    1、系统类<br>    dump(Url::build(‘index/index/index’));<br>2、系统方法<br>    dump(url(‘index/index/index’));<br>    3、使用</p>
+<pre><code>// 普通url地址
+    dump(Url::build(&apos;index/index/index&apos;));
+    dump(url(&apos;index/index/index&apos;));
+// 带参数url
+    dump(url(&apos;index/index/abc&apos;,[&apos;id&apos;=&gt;10,&apos;name&apos;=&gt;&quot;张三&quot;]));
+    dump(url(&apos;index/index/abc&apos;,&apos;id=10&amp;name=100&apos;));
+    // string(45) &quot;/index/abc/id/10/name/%E5%BC%A0%E4%B8%89.html&quot;
+    // string(30) &quot;/index/abc/id/10/name/100.html&quot;
+// 带锚点
+    dump(url(&apos;index/index/abc#name&apos;,[&apos;id&apos;=&gt;10,&apos;name&apos;=&gt;&quot;100&quot;]));
+    // string(35) &quot;/index/abc/id/10/name/100.html#name&quot;
+// 带域名
+    dump(url(&apos;index/index/abc#name@blog&apos;,[&apos;id&apos;=&gt;10,&apos;name&apos;=&gt;&quot;100&quot;]));
+    // string(53) &quot;http://blog.tp.com/index/abc/id/10/name/100.html#name&quot;
+// 加入口文件
+    Url::root(&apos;/index.php&apos;);
+    dump(url(&apos;index/index/abc#name@blog&apos;,[&apos;id&apos;=&gt;10,&apos;name&apos;=&gt;&quot;100&quot;]));
+    // string(63) &quot;http://blog.tp.com/index.php/index/abc/id/10/name/100.html#name&quot;
+</code></pre><p>第5章 TP5.0 控制器<br>1.新建控制器(前台模块为例)<br>1、在前台控制器目录下(C:\AppServ\www\tp5\application\index\controller)<br>新建控制器文件 User.php<br>2、User.php文件中如何书写<br>        &lt;?php<br>        // 声明命名空间<br>        namespace app\index\controller;<br>        // 声明控制器<br>        class User{<br>            // 声明方法<br>            public function index(){<br>                return “我是User控制器下的index方法”;<br>            }<br>        }<br>3、地址栏访问<br>        <a href="http://www.tp.com/index.php/Index/user/index" target="_blank" rel="noopener">http://www.tp.com/index.php/Index/user/index</a><br>4、注意:<br>    1、控制器文件名必须首字母大写,文件名采用驼峰命名。<br>    2、控制器名必须跟文件名一一对应<br>3、命名空间必须和文件名对应<br>        namespace app\index\controller;<br>        C:\AppServ\www\tp5\application\index\controller<br>    4、如果控制器名字采用驼峰命名 UserInfo.php<br><a href="http://www.tp.com/index.php/Index/user_info/index" target="_blank" rel="noopener">http://www.tp.com/index.php/Index/user_info/index</a></p>
+<p>2.控制器如何加载页面<br>2.1.系统View类<br>    $view=new \think\View;<br>    return $view-&gt;fetch();</p>
+<p>use think\View;<br>    $view=new View();<br>    return $view-&gt;fetch();</p>
+<p>2.2.系统Controller类<br>    1、需要继承系统控制器类<br>        use think\Controller;<br>            // 声明控制器<br>            class User extends Controller<br>    2、直接使用系统控制器类的方法<br>        return $this-&gt;fetch();<br>    3、系统函数<br>        return view();</p>
+<p>3.数据输出<br>1、在应用配置文件中可以设置数据返回格式<br>        ‘default_return_type’    =&gt; ‘json’, #默认是html<br>2、ajax请求的时候如何返回数据<br>        ‘default_ajax_return’    =&gt; ‘json’,</p>
+<p>4.控制器的初始化<br>1、控制器初始化方法必须继承系统控制器<br>    // 控制器的初始化方法</p>
+<pre><code>public function _initialize(){
+    echo &quot;我是初始化方法&quot;;
+}
+</code></pre><p>2、只要调用控制器下的任意方法，都会先找初始化方法<br>3、控制器初始化方法的使用<br>    1、可以用来提取控制器下公共的代码<br>    2、后台权限把控</p>
+<p>5.前置操作<br>    0、前置方法 把一些公共的设置提取成方法进行调用<br>    1、前置方法必须结合系统控制器<br>    2、核心设置<br>        // 前置方法属性<br>        protected $beforeActionList=[<br>            ‘one’,<br>            // 不想让谁使用前置方法two<br>            ‘two’=&gt;[‘except’=&gt;”index”],<br>            // 仅仅可以让谁使用前置方法three<br>            ‘three’=&gt;[‘only’=&gt;’index’],<br>        ];</p>
+<p>6.页面跳转<br>6.1页面跳转基于系统控制器类，所以控制器必须继承系统控制器</p>
+<p>6.2方法所在路径<br>    C:\AppServ\www\tp5\thinkphp\library\traits\controlle\Jump.php<br>6.3跳转方式<br>    a、成功跳转<br>        // $this-&gt;success(提示信息,跳转地址,用户自定义数据,跳转跳转,header信息);<br>        // 跳转地址未设置时 默认返回上一个页面<br>        $this-&gt;success(‘跳转成功’,url(‘index/index’));<br>    b、失败跳转<br>$this-&gt;error(‘登录失败’);</p>
+<p>6.4跳转方法给模板页面的数据<br>        1、$code 返回的状态码 成功 1 失败 0<br>        2、$msg 页面的提示信息<br>        3、$wait 等待时间<br>        4、$url 制定跳转页面 默认返回上一个页面<br>        5、$data 用户返回的数据</p>
+<p>6.5相关配置文件<br>    // 默认跳转页面对应的模板文件<br>    ‘dispatch_success_tmpl’  =&gt; THINK_PATH . ‘tpl’ . DS . ‘dispatch_jump.tpl’,<br>    ‘dispatch_error_tmpl’    =&gt; THINK_PATH . ‘tpl’ . DS . ‘dispatch_jump.tpl’,</p>
+<p>6.6修改成功和失败的模板页面<br>        a、修改默认文件<br>        1、默认文件位置<br>            C:\AppServ\www\tp5\thinkphp\tpl\dispatch_jump.php<br>        2、根据原有代码进行修改<br>            在成功失败模板页面进行修改<br>    b、用户自定义页面跳转模板<br>        1、修改配置文件<br>            ‘dispatch_success_tmpl’  =&gt; THINK_PATH . ‘tpl’ . DS . ‘success.tpl’,<br>            ‘dispatch_error_tmpl’    =&gt; THINK_PATH . ‘tpl’ . DS . ‘error.tpl’,<br>        2、在系统模板目录下 (C:\AppServ\www\tp5\thinkphp\tpl) 新建 success.php 和error.php<br>3、自定义书写跳转页面<br>可以用bootstrap<br>7.重定向<br>    1、作用：<br>            重定向(Redirect)就是通过各种方法将各种网络请求重新定个方向转到其它位置<br>    2、使用:</p>
+<pre><code>redirect(&apos;跳转地址&apos;,&apos;其他参数&apos;,code,&apos;隐士参数&apos;);
+$this-&gt;redirect(&apos;index/index&apos;,[&apos;id&apos;=&gt;100,&apos;name&apos;=&gt;&apos;abc&apos;]);
+</code></pre><p>8.空控制器和空操作<br>    1、空操作</p>
+<pre><code># 主要解决一些用户恶意的地址栏输入，报错影响交互
+
+public function _empty(){
+    $this-&gt;redirect(&apos;index/index&apos;);
+}
+</code></pre><p>2、空控制器</p>
+<pre><code>// 声明命名空间
+namespace app\index\controller;
+use think\Controller;
+// 声明控制器
+class Error extends Controller{
+    // index
+    public function index(){
+        $this-&gt;redirect(&apos;index/index&apos;);
+    }
+    // 空操作
+    public function _empty(){
+        $this-&gt;redirect(&apos;index/index&apos;);        
+    }
+}
+</code></pre><p>3、注意:<br>        1、网站上线的时候每一个控制器都必须添加空操作<br>        2、不论前台后台都需要写一个空控制器</p>
+<p>9.使用命令行<br>    1、切换到网站的根目录下<br>    2、输入php think<br>    3、使用<br>        1、创建控制器<br>            php think make:controller app\index\controller\Goods<br>        2、创建数据模型<br>            php think make:model app\index\model\Goods<br>        3、清空runtime 临时文件<br>            php think clear<br>10.资源控制器<br>    1、使用命令行创建控制器<br>        php think make:controller app\index\controller\Goods<br>    2、资源控制器一般配合资源路由使用</p>
+<p>第6章 TP5.0 请求和响应<br>1.系统类(C:\AppServ\www\tp5\thinkphp\library\think)<br>    Config<br>    Controller<br>    Env<br>    Route<br>    Url<br>    View<br>    Request </p>
+<p>2.系统方法(C:\AppServ\www\tp5\thinkphp\helper.php)    </p>
+<pre><code>- dump();  格式化输出
+- controller(); 调用控制器
+- action(); 调用方法
+- config(); 读取和设置配置文件
+- url(); 生成URL地址
+- view(); 加载页面
+- request(); 实例化 Request类
+</code></pre><p>3.如何获取请求类<br>    1、系统函数<br>        $request=request();</p>
+<p>2、系统Request类</p>
+<pre><code>use think\Request;
+// 因为Request类属于单例模式 所以 不能直接new
+$request=Request::instance();
+</code></pre><p>3、系统Request类</p>
+<pre><code>use think\Request;
+// 方法的书写
+    public function index(Request $request)
+    {
+        dump($request);
+    }
+</code></pre><p>4.获取用户请求信息<br>    1、获取域名<br>        dump($request-&gt;domain());<br>    2、获取URL地址 除域名以外<br>        dump($request-&gt;url());<br>    3、 获取入口文件<br>        dump($request-&gt;baseFile());<br>    4、获取PathInfo路径<br>        dump($request-&gt;pathinfo());<br>    5、获取PATHINFO路径 无后缀<br>        dump($request-&gt;path());<br>    6、url地址伪静态后缀<br>        dump($request-&gt;ext());<br>    7、伪静态<br>        就是将路径伪装成静态页面，让搜索引擎更好收录网站，防止别人知道网站真实开发语言</p>
+<p>5.获取请求模块\控制器\方法<br>    1、控制器<br>        $request-&gt;controller();<br>    2、方法<br>        $request-&gt;action();<br>    3、模块<br>        $request-&gt;module();</p>
+<p>6.获取请求相关类型<br>    1、请求类型<br>        $request-&gt;method();<br>    2、请求资源类型<br>        $request-&gt;type();<br>    3、访问地址<br>        $request-&gt;ip();<br>    4、是否ajax请求<br>        $request-&gt;isAjax();<br>    5、获取所有地址栏参数<br>        $request-&gt;param();<br>    6、获取特定字段<br>        $request-&gt;only([‘name’,’id’]);<br>    7、剔除字段<br>        $request-&gt;except([‘name’,’id’]);</p>
+<p>7.获取变量<br>    1、判断是否存在<br>        dump($request-&gt;has(‘id’,’get’));<br>        dump(input(‘get.id’));<br>    2、读取变量</p>
+<pre><code>dump($request-&gt;get(&apos;id&apos;));
+dump(input(&apos;get.id&apos;));
+
+dump($request-&gt;get());
+dump(input(&apos;get.&apos;));
+</code></pre><p>3、可以读取数据类型<br>        get、post、delete、put、session、cookie、server 等</p>
+<pre><code>$request-&gt;get();
+$request-&gt;post();
+$request-&gt;put();
+$request-&gt;server();
+$request-&gt;request();
+$request-&gt;session();
+$request-&gt;cookie();
+</code></pre><p>8.变量的过滤<br>    1、作用<br>        防止恶意输入、防止sql注入<br>    2、使用<br>        1、全部的数据进行过滤</p>
+<pre><code>// 单个方法过滤
+$request-&gt;filter(&quot;htmlspecialchars&quot;);
+// 多种方法过滤
+$request-&gt;filter([&quot;htmlspecialchars&quot;,&quot;strip_tags&quot;]);
+</code></pre><p>2、针对变量过滤<br>            $request-&gt;get(‘name’,’’,’htmlspecialchars’);</p>
+<p>3、密码过滤之后加密<br>            dump($request-&gt;get(‘pass’,’’,’htmlspecialchars,md5’));</p>
+<p>9.变量的排除和获取<br>    1、获取</p>
+<pre><code>$request-&gt;only(&apos;name&apos;);
+$request-&gt;only(&apos;name&apos;,get);
+$request-&gt;only([&apos;name&apos;,&apos;pass&apos;],get);
+</code></pre><p>2、排除</p>
+<pre><code>$request-&gt;except([&apos;name&apos;,&apos;pass&apos;],get);
+$request-&gt;except([&apos;name&apos;,&apos;pass&apos;]);
+$request-&gt;except(&apos;name&apos;);
+</code></pre><p>10.变量修饰符<br>    1、修饰变量的类型<br>        s 字符串<br>        d 整形<br>        f 浮点型<br>        a 数组<br>        b 布尔型<br>    2、使用</p>
+<pre><code>dump(input(&apos;get.id/d&apos;)); // 强制转换整形
+dump($request-&gt;get(&apos;id/d&apos;));
+</code></pre><p>11.更改变量</p>
+<pre><code>// 地址栏访问 http://www.tp.com/index.php/Index/Index/xiugai?id=10
+dump($request-&gt;get(&apos;id&apos;));  // 10
+dump($request-&gt;get([&apos;id&apos;=&gt;20]));  //数组
+dump($request-&gt;get(&apos;id&apos;));  // 20
+</code></pre><p>12.请求类型判断<br>    1、系统类</p>
+<pre><code>// 判断是否是get请求
+dump($request-&gt;isGet());
+// 判断是否是手机端
+dump($request-&gt;isMobile());
+</code></pre><p>2、系统函数<br>        dump(request()-&gt;isGet());<br>        dump(request()-&gt;isMobile());</p>
+<p>13.模拟put、delete请求<br>    1、使用</p>
+<pre><code>&lt;form action=&quot;{:url(&apos;type&apos;)}&quot; method=&quot;post&quot;&gt;
+    &lt;p&gt;
+        User:
+        &lt;input type=&quot;text&quot; name=&quot;name&quot; id=&quot;&quot;&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;_method&quot; value=&quot;PUT&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        Pass:
+        &lt;input type=&quot;password&quot; name=&quot;pass&quot; id=&quot;&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
+    &lt;/p&gt;
+&lt;/form&gt;
+</code></pre><p>2、注意<br>        1、表单的请求类型必须是post<br>        2、需要设置隐藏域传递模拟请求类型</p>
+<p>14.模拟ajax请求和PJAX请求<br>    1、模拟ajax请求<br>        <a href="http://www.tp.com/index.php/index/index/type?_ajax=10" target="_blank" rel="noopener">http://www.tp.com/index.php/index/index/type?_ajax=10</a><br>    2、模拟pjax请求<br>        <a href="http://www.tp.com/index.php/index/index/type?_pjax=10" target="_blank" rel="noopener">http://www.tp.com/index.php/index/index/type?_pjax=10</a></p>
+<p>15.伪静态<br>    1、作用<br>        1) URL伪静态通常是为了满足更好的SEO效果<br>        2) 为了网站的安全<br>    2、修改伪静态<br>        在配置文件中进行修改<br>        ‘url_html_suffix’        =&gt; ‘shtml’,<br>    3、获取当前的伪静态后缀<br>        $request-&gt;ext();</p>
+<p>16.参数绑定<br>    1、使用</p>
+<pre><code>public function banding($id,$name=&quot;admin&quot;){
+    dump($id);
+    dump($name);
+}
+
+http://www.tp.com/index.php/index/index/banding/id/1/name/user
+</code></pre><p>2、注意<br>        1、参数绑定的个数，少于地址栏参数的个数<br>        2、参数绑定的名字，必须和地址栏参数名字一一对应<br>        3、参数绑定可以设置默认值</p>
+<p>第7章 TP5.0数据库操作<br>1、TP5.0 支持数据库类型<br>    Mysql、SqlServer、PgSQL、Sqlite等数据库的支持。</p>
+<p>2、如何连接数据库<br>    2.1、配置文件定义<br>        a、配置文件目录<br>            C:\AppServ\www\tp5\application\database.php<br>        b、如何配置</p>
+<pre><code>return [
+    // 数据库类型
+    &apos;type&apos;            =&gt; &apos;mysql&apos;,
+    // 服务器地址
+    &apos;hostname&apos;        =&gt; &apos;127.0.0.1&apos;,
+    // 数据库名
+    &apos;database&apos;        =&gt; &apos;yzmedu&apos;,
+    // 用户名
+    &apos;username&apos;        =&gt; &apos;root&apos;,
+    // 密码
+    &apos;password&apos;        =&gt; &apos;123456789&apos;,
+    // 端口
+    &apos;hostport&apos;        =&gt; &apos;3306&apos;,
+];
+</code></pre><p>c、如何使用</p>
+<pre><code>// 实例化系统数据库类
+$DB=new Db;
+// 查询数据
+$data=$DB::table(&quot;user&quot;)-&gt;select();
+// 使用sql语句
+$data=$DB::query(&quot;select * from user&quot;);
+</code></pre><p>2.2、方法配置</p>
+<p>1、使用数组</p>
+<pre><code>$Db=Db::connect([
+        // 数据库类型
+        &apos;type&apos;            =&gt; &apos;mysql&apos;,
+        // 服务器地址
+        &apos;hostname&apos;        =&gt; &apos;127.0.0.1&apos;,
+        // 数据库名
+        &apos;database&apos;        =&gt; &apos;yzmedu2&apos;,
+        // 用户名
+        &apos;username&apos;        =&gt; &apos;root&apos;,
+        // 密码
+        &apos;password&apos;        =&gt; &apos;123456789&apos;,
+        // 端口
+        &apos;hostport&apos;        =&gt; &apos;3306&apos;,
+    ]);
+</code></pre><p>2、使用字符串</p>
+<pre><code>$Db=Db::connect(&quot;mysql://root:123456789@127.0.0.1:3306/yzmedu#utf8&quot;);
+// 数据库类型://用户名:密码@数据库地址:数据库端口/数据库名#字符集
+</code></pre><p>3、如何使用</p>
+<pre><code>$data=$Db-&gt;table(&quot;user&quot;)-&gt;select();
+</code></pre><p>2.3、模型类定义<br>        1、创建数据模型<br>            a、命令行创建<br>                1、切换到项目目录<br>                2、执行命令<br>                    php think make:model app\index\model\User<br>            b、手动创建<br>                1、打开数据模型目录<br>                    C:\AppServ\www\tp5\application\index\model<br>                2、在目录下新建 文件 User.php<br>                3、在文件中书写代码</p>
+<pre><code>namespace app\index\model;
+use think\Model;
+class User extends Model
+{
+    //
+}
+</code></pre><p>2、如何设置</p>
+<pre><code>class User extends Model
+{
+    // 使用数组配置链接数据库
+    protected $connection=[
+        // 数据库类型
+        &apos;type&apos;            =&gt; &apos;mysql&apos;,
+        // 服务器地址
+        &apos;hostname&apos;        =&gt; &apos;127.0.0.1&apos;,
+        // 数据库名
+        &apos;database&apos;        =&gt; &apos;yzmedu&apos;,
+        // 用户名
+        &apos;username&apos;        =&gt; &apos;root&apos;,
+        // 密码
+        &apos;password&apos;        =&gt; &apos;123456789&apos;,
+        // 端口
+        &apos;hostport&apos;        =&gt; &apos;3306&apos;,
+    ];
+    // 使用字符串配置链接数据库
+    protected $connection=&quot;mysql://root:123456789@127.0.0.1:3306/yzmedu#utf8&quot;;
+}
+</code></pre><p>3、如何控制器中使用</p>
+<pre><code>$user=new \app\index\model\User();
+// 查询所有的数据
+dump($user::all());
+</code></pre><p>3、查询数据<br>    1、tp方法</p>
+<pre><code>// 实例化系统数据库类
+$DB=new Db;
+// 查询数据
+$data=$DB::table(&quot;user&quot;)-&gt;select();
+</code></pre><p>2、使用sql语句</p>
+<pre><code>// 实例化系统数据库类
+$DB=new Db;
+// 使用sql语句
+$data=$DB::query(&quot;select * from user&quot;);
+</code></pre><p>4、数据库的基本使用</p>
+<p>1、增加</p>
+<pre><code># 返回值 影响行数
+$data=Db::execute(&quot;insert into user value(null,&apos;user1&apos;,&apos;123&apos;,&apos;18&apos;)&quot;);
+$data=Db::execute(&quot;insert into user value(null,?,?,?)&quot;,[&apos;user2&apos;,&apos;456&apos;,&apos;20&apos;]);
+$data=Db::execute(&quot;insert into user value(null,:name,:pass,:age)&quot;,[&apos;name&apos;=&gt;&quot;user3&quot;,&quot;pass&quot;=&gt;&apos;678&apos;,&apos;age&apos;=&gt;25]);
+</code></pre><p>2、修改</p>
+<pre><code>#返回值 影响行数
+$data=Db::execute(&quot;update user set age=&apos;20&apos; where id=9&quot;);
+</code></pre><p>3、删除</p>
+<pre><code>#返回值 影响行数
+$data=Db::execute(&quot;delete from user where id=10&quot;);
+$data=Db::execute(&quot;delete from user where id&gt;?&quot;,[15]);
+$data=Db::execute(&quot;delete from user where id&gt;:id&quot;,[&quot;id&quot;=&gt;10]);
+</code></pre><p>4、查看</p>
+<pre><code>$data=Db::query(&quot;select * from user&quot;);
+$data=Db::query(&quot;select * from user where  id &gt;=? and id&lt;=?&quot;,[5,8]);
+</code></pre><p>5、获取指定sql语句</p>
+<pre><code>Db::getLastSql();
+</code></pre><p>6、用户模块</p>
+<p>1、命令行 找到项目目录 新建控制器<br>        php think make:controller app\index\controller\Users</p>
+<p>2、写资源路由</p>
+<p>5、TP数据库处理</p>
+<p>5.1、查询操作</p>
+<p>1、table方法查询数据</p>
+<pre><code>// 查询所有数据
+// SELECT * FROM `user`
+$data=Db::table(&quot;user&quot;)-&gt;select();
+// 查询一条数据
+// SELECT * FROM `user` LIMIT 1
+$data=Db::table(&quot;user&quot;)-&gt;find();
+</code></pre><p>2、name方法查询数据</p>
+<pre><code>// 与配置文件有关
+// name 会自动添加配置文件中的表前缀
+$data=Db::name(&quot;user&quot;)-&gt;select();
+$data=Db::name(&quot;user&quot;)-&gt;find();
+</code></pre><p>3、助手函数</p>
+<pre><code># SELECT * FROM `user`
+$data=db(&quot;user&quot;)-&gt;select();
+# SELECT * FROM `user` LIMIT 1
+$data=db(&quot;user&quot;)-&gt;find();
+</code></pre><p>4、where条件匹配</p>
+<pre><code>// SELECT * FROM `user` WHERE `id` &gt; 25
+$data=Db::table(&quot;user&quot;)-&gt;where(&quot;id&quot;,&quot;&gt;&quot;,25)-&gt;select();
+// SELECT * FROM `user` WHERE ( `id` &gt; 25 AND `id` &lt; 28 )
+$data=Db::table(&quot;user&quot;)-&gt;where(&quot;id&quot;,&quot;&gt;&quot;,25)-&gt;where(&quot;id&quot;,&quot;&lt;&quot;,28)-&gt;select();
+// SELECT * FROM `user` WHERE `name` LIKE &apos;%user1%&apos;
+$data=Db::table(&quot;user&quot;)-&gt;where(&quot;name&quot;,&quot;like&quot;,&quot;%user1%&quot;)-&gt;select();
+// SELECT * FROM `user` WHERE `name` = &apos;user3&apos; AND `pass` = &apos;qwe&apos;
+$data=Db::table(&quot;user&quot;)-&gt;where(&quot;name&quot;,&quot;user3&quot;)-&gt;where(&quot;pass&quot;,&apos;qwe&apos;)-&gt;select();
+// SELECT * FROM `user` WHERE ( id &gt; 25 and id &lt;28 )
+$data=Db::table(&quot;user&quot;)-&gt;where(&quot;id &gt; 25 and id &lt;28&quot;)-&gt;select();
+// SELECT * FROM `user` WHERE `id` &gt; 25 AND `name` = &apos;user10&apos;
+$data=Db::table(&quot;user&quot;)-&gt;where([&quot;id&quot;=&gt;[&quot;&gt;&quot;,25],&quot;name&quot;=&gt;&apos;user10&apos;])-&gt;select();
+// SELECT * FROM `user` WHERE ( `id` &gt; 25 AND `id` &lt; 28 )
+$data=Db::table(&quot;user&quot;)-&gt;where([&quot;id&quot;=&gt;[&quot;&gt;&quot;,25]])-&gt;where([&apos;id&apos;=&gt;[&quot;&lt;&quot;,28]])-&gt;select();
+</code></pre><p>5、whereOr 或者匹配</p>
+<pre><code>// SELECT * FROM `user` WHERE `id` &lt;= 23 OR `id` &gt;= 28
+$data=Db::table(&quot;user&quot;)-&gt;where(&quot;id&quot;,&quot;&lt;=&quot;,23)-&gt;whereOr(&quot;id&quot;,&quot;&gt;=&quot;,28)-&gt;select();
+// SELECT * FROM `user` WHERE `name` LIKE &apos;%user1%&apos; OR `name` LIKE &apos;%user2%&apos;
+$data=Db::table(&quot;user&quot;)-&gt;where(&quot;name&quot;,&quot;like&quot;,&quot;%user1%&quot;)-&gt;whereOr(&quot;name&quot;,&quot;like&quot;,&quot;%user2%&quot;)-&gt;select();
+</code></pre><p>6、limit 截取数据</p>
+<pre><code>// SELECT * FROM `user` LIMIT 5
+$data=Db::table(&quot;user&quot;)-&gt;limit(5)-&gt;select();
+
+// SELECT * FROM `user` LIMIT 5,5
+$data=Db::table(&quot;user&quot;)-&gt;limit(5,5)-&gt;select();
+</code></pre><p>7、Order 排序</p>
+<pre><code>// SELECT * FROM `user` ORDER BY `id`
+$data=Db::table(&quot;user&quot;)-&gt;order(&quot;id&quot;)-&gt;select();
+// SELECT * FROM `user` ORDER BY `id` desc
+$data=Db::table(&quot;user&quot;)-&gt;order(&quot;id&quot;,&quot;desc&quot;)-&gt;select();
+</code></pre><p>8、field 设置查询字段</p>
+<pre><code>// 设置查询字段
+// SELECT `name`,`pass` FROM `user`
+$data=Db::table(&quot;user&quot;)-&gt;field(&quot;name,pass&quot;)-&gt;select();
+$data=Db::table(&quot;user&quot;)-&gt;field([&apos;name&apos;,&apos;pass&apos;])-&gt;select();
+// 起别名
+// SELECT name uname,`pass` FROM `user`
+$data=Db::table(&quot;user&quot;)-&gt;field(&quot;name uname,pass&quot;)-&gt;select();
+$data=Db::table(&quot;user&quot;)-&gt;field([&apos;name&apos;=&gt;&quot;uname&quot;,&apos;pass&apos;])-&gt;select();
+// sql 的系统函数
+// SELECT count(*) as tot FROM `user`
+$data=Db::table(&quot;user&quot;)-&gt;field(&quot;count(*) as tot&quot;)-&gt;select();
+$data=Db::table(&quot;user&quot;)-&gt;field([&apos;count(*)&apos;=&gt;&quot;tot&quot;])-&gt;select();
+// 排除字段
+// SELECT `id`,`age` FROM `user`
+$data=Db::table(&quot;user&quot;)-&gt;field(&quot;name,pass&quot;,true)-&gt;select();
+$data=Db::table(&quot;user&quot;)-&gt;field([&quot;name&quot;,&apos;pass&apos;],true)-&gt;select();
+</code></pre><p>9、Page 实现分页效果</p>
+<pre><code>// SELECT * FROM `user` LIMIT 5,5
+$data=Db::table(&quot;user&quot;)-&gt;page(&quot;1,5&quot;)-&gt;select();
+</code></pre><p>10、Group分组聚合</p>
+<pre><code>// SELECT `pass`,count(*) tot FROM `user` GROUP BY pass
+$data=Db::table(&quot;user&quot;)-&gt;field(&quot;pass,count(*) tot&quot;)-&gt;group(&quot;pass&quot;)-&gt;select();
+</code></pre><p>11、having 过滤</p>
+<pre><code>// 只能结合分组使用
+// SELECT `pass`,count(*) tot FROM `user` GROUP BY pass HAVING tot &gt;=2
+$data=Db::table(&quot;user&quot;)-&gt;field(&quot;pass,count(*) tot&quot;)-&gt;having(&quot;tot &gt;=2&quot;)-&gt;group(&quot;pass&quot;)-&gt;select();
+</code></pre><p>12、多表查询</p>
+<pre><code>// select goods.*,type.name tname from type,goods where goods.cid=type.id
+$data=Db::query(&quot;select goods.*,type.name tname from type,goods where goods.cid=type.id&quot;);
+
+// 内联实现数据库链接
+// SELECT `goods`.*,type.name tname FROM `goods` INNER JOIN `type` `type` ON `goods`.`cid`=`type`.`id`
+$data=Db::table(&quot;goods&quot;)-&gt;field(&quot;goods.*,type.name tname&quot;)-&gt;join(&quot;type&quot;,&quot;goods.cid=type.id&quot;)-&gt;select();
+
+// 右链接
+// SELECT `goods`.*,type.name tname FROM `goods` RIGHT JOIN `type` `type` ON `goods`.`cid`=`type`.`id`
+$data=Db::table(&quot;goods&quot;)-&gt;field(&quot;goods.*,type.name tname&quot;)-&gt;join(&quot;type&quot;,&quot;goods.cid=type.id&quot;,&apos;right&apos;)-&gt;select();
+
+// 左链接
+$data=Db::table(&quot;goods&quot;)-&gt;field(&quot;goods.*,type.name tname&quot;)-&gt;join(&quot;type&quot;,&quot;goods.cid=type.id&quot;,&apos;left&apos;)-&gt;select();
+</code></pre><p>13、别名使用-给表起别名</p>
+<pre><code>// SELECT `g`.*,t.name tname FROM `goods` `g` LEFT JOIN `type` `t` ON `g`.`cid`=`t`.`id`
+$data=Db::table(&quot;goods&quot;)-&gt;alias(&quot;g&quot;)-&gt;field(&quot;g.*,t.name tname&quot;)-&gt;join(&quot;type t&quot;,&quot;g.cid=t.id&quot;,&apos;left&apos;)-&gt;select();
+</code></pre><p>14、union集合</p>
+<pre><code>// SELECT `name` FROM `user` UNION select name from goods
+$data=Db::field(&quot;name&quot;)-&gt;table(&quot;user&quot;)-&gt;union(&quot;select name from goods&quot;)-&gt;select();
+</code></pre><p>15、参数绑定(bind) 为了防止sql注入</p>
+<pre><code># DELETE FROM `user` WHERE `id` = 25
+$id=input(&quot;id&quot;);
+$data=Db::table(&quot;user&quot;)-&gt;where(&quot;id&quot;,&quot;:id&quot;)-&gt;bind([&quot;id&quot;=&gt;[$id,\PDO::PARAM_INT]])-&gt;delete();
+</code></pre><p>16、数据统计</p>
+<pre><code>// SELECT MAX(age) AS tp_max FROM `user` LIMIT 1
+$data=Db::table(&quot;user&quot;)-&gt;max(&quot;age&quot;);
+
+// SELECT MIN(age) AS tp_min FROM `user` LIMIT 1
+$data=Db::table(&quot;user&quot;)-&gt;min(&quot;age&quot;);
+
+// SELECT AVG(age) AS tp_avg FROM `user` LIMIT 1
+$data=Db::table(&quot;user&quot;)-&gt;avg(&quot;age&quot;);
+
+// SELECT SUM(age) AS tp_sum FROM `user` LIMIT 1
+$data=Db::table(&quot;user&quot;)-&gt;sum(&quot;age&quot;);
+
+// SELECT COUNT(age) AS tp_count FROM `user` LIMIT 1
+$data=Db::table(&quot;user&quot;)-&gt;count(&quot;age&quot;);
+</code></pre><p>17、视图查询</p>
+<pre><code>$data=Db::view(&quot;goods&quot;,&quot;id,name,price&quot;)
+        -&gt;view(&quot;type&quot;,&apos;name tname&apos;,&quot;type.id=goods.cid&quot;)
+        -&gt;select();
+// SELECT `goods`.`id`,`goods`.`name`,`goods`.`price`,type.name tname FROM `goods` `goods` INNER JOIN `type` `type` ON `type`.`id`=`goods`.`cid`
+
+$data=Db::view(&quot;goods&quot;,&quot;id,name,price&quot;)
+        -&gt;view(&quot;type&quot;,&apos;name tname&apos;,&quot;type.id=goods.cid&quot;,&quot;left&quot;)
+        -&gt;select();
+// SELECT `goods`.`id`,`goods`.`name`,`goods`.`price`,type.name tname FROM `goods` `goods` LEFT JOIN `type` `type` ON `type`.`id`=`goods`.`cid`
+</code></pre><p>5.2、增加操作</p>
+<p>1、插入单条数据</p>
+<pre><code>// 数组中的字段名 必须和数据库中的字段名一致
+
+   $data=[&quot;name&quot;=&gt;&quot;张三&quot;,&quot;pass&quot;=&gt;&quot;123&quot;,&quot;age&quot;=&gt;18,];
+
+   $code=Db::table(&quot;user&quot;)-&gt;insert($data);
+
+   $code=db(&quot;user&quot;)-&gt;insert($data);
+   // INSERT INTO `user` (`name` , `pass` , `age`) VALUES (&apos;张三&apos; , &apos;123&apos; , 18)
+   // 返回值 影响行数
+</code></pre><p>2、插入多条数据</p>
+<pre><code>$data=[
+    [&quot;name&quot;=&gt;&quot;张三1&quot;,&quot;pass&quot;=&gt;&quot;123&quot;,&quot;age&quot;=&gt;15,],
+    [&quot;name&quot;=&gt;&quot;张三2&quot;,&quot;pass&quot;=&gt;&quot;123&quot;,&quot;age&quot;=&gt;19,],
+];
+
+$code=Db::table(&quot;user&quot;)-&gt;insertAll($data);
+$code=db(&quot;user&quot;)-&gt;insertAll($data);
+// 返回值 影响行数
+</code></pre><p>3、获取最后一次插入ID</p>
+<pre><code>$data=[&quot;name&quot;=&gt;&quot;张三&quot;,&quot;pass&quot;=&gt;&quot;123&quot;,&quot;age&quot;=&gt;18,];
+$code=Db::table(&quot;user&quot;)-&gt;insertGetId($data);
+$code=db(&quot;user&quot;)-&gt;inserGetId($data);
+
+// 返回值最后插入的id
+</code></pre><p>5.3、更新数据</p>
+<p>1、修改数据</p>
+<pre><code>$code=Db::table(&quot;user&quot;)-&gt;where(&quot;id&quot;,&quot;&gt;&quot;,&apos;60&apos;)-&gt;update([&quot;pass&quot;=&gt;&quot;qwe&quot;,&quot;age&quot;=&gt;2]);
+// UPDATE `user` SET `pass`=&apos;qwe&apos;,`age`=2 WHERE `id` &gt; 60
+// 返回值 影响行数 
+
+$code=Db::table(&quot;user&quot;)-&gt;update([&apos;age&apos;=&gt;52,&quot;id&quot;=&gt;62]);
+// UPDATE `user` SET `age`=52 WHERE `id` = 62
+
+$code=Db::table(&quot;user&quot;)-&gt;where(&quot;id&quot;,73)-&gt;setField(&quot;pass&quot;,&apos;abc&apos;);
+// UPDATE `user` SET `pass`=&apos;abc&apos; WHERE `id` = 73
+</code></pre><p>2、设置自增</p>
+<pre><code>$code=Db::table(&quot;user&quot;)-&gt;where(&quot;id&quot;,63)-&gt;setInc(&quot;age&quot;);
+// UPDATE `user` SET `age`=age+1 WHERE `id` = 63
+
+$code=db(&quot;user&quot;)-&gt;where(&quot;id&quot;,66)-&gt;setInc(&quot;age&quot;);
+// UPDATE `user` SET `age`=age+1 WHERE `id` = 66
+</code></pre><p>3、设置自减</p>
+<pre><code>// UPDATE `user` SET `age`=age-1 WHERE `id` = 62
+$code=Db::table(&quot;user&quot;)-&gt;where(&quot;id&quot;,62)-&gt;setDec(&quot;age&quot;);
+
+$code=Db::table(&quot;user&quot;)-&gt;where(&quot;id&quot;,62)-&gt;setDec(&quot;age&quot;,3);
+// UPDATE `user` SET `age`=age-3 WHERE `id` = 62
+
+$code=db(&quot;user&quot;)-&gt;where(&quot;id&quot;,63)-&gt;setDec(&quot;age&quot;,3);
+// UPDATE `user` SET `age`=age-3 WHERE `id` = 63
+</code></pre><p>5.4、删除数据</p>
+<p>1、删除一条数据</p>
+<pre><code>$code=Db::table(&quot;user&quot;)-&gt;where(&quot;id&quot;,&quot;71&quot;)-&gt;delete();
+$code=Db::table(&quot;user&quot;)-&gt;delete(70);
+</code></pre><p>2、删除多条数据</p>
+<pre><code>$code=Db::table(&quot;user&quot;)-&gt;where(&quot;id in(51,54,55)&quot;)-&gt;delete();
+$code=Db::table(&quot;user&quot;)-&gt;delete([62,63,66]);
+</code></pre><p>3、删除区间数据</p>
+<pre><code>$code=Db::table(&quot;user&quot;)-&gt;where(&quot;id&gt;40 and id&lt;45&quot;)-&gt;delete();
+// DELETE FROM `user` WHERE ( id&gt;40 and id&lt;45 )
+</code></pre><p>6、事务机制</p>
+<p>1、事务<br>        张三 银行卡 1000， 李四 银行卡 500, 张三给李四转账200<br>        1) 银行 先扣除 张三的200<br>        2) 银行 将200 给了李四</p>
+<p>2、mysql事务<br>        mysql事务 要求 数据库的引擎必须 InnoDB</p>
+<p>3、使用<br>        1、自动控制事务</p>
+<pre><code>Db::transaction(function(){
+    // 删除一条数据
+    Db::table(&quot;user&quot;)-&gt;delete(40);
+    // 删除数据
+    Db::table(&quot;user&quot;)-&gt;deletes();
+});
+</code></pre><p>2、手动控制事务 </p>
+<pre><code>    // 开启事务
+    Db::startTrans();
+    // 事务
+    try{
+        // 删除数据id 31
+        $a=Db::table(&quot;user&quot;)-&gt;delete(31);
+        // 判断是否删除成功
+        if (!$a) {
+            throw new \Exception(&quot;删除id 31 数据没有成功&quot;);
+        }
+        // 删除不存在的数据 id 32
+        $b=Db::table(&quot;user&quot;)-&gt;delete(32);
+        // 判断是否删除成功
+        if (!$b) {
+            throw new \Exception(&quot;删除id 32 数据没有成功&quot;);
+        }
+        // 执行提交操作
+        Db::commit();
+    }catch(\Exception $e){
+        // 回滚事务
+        Db::rollback();
+        // 获取提示信息
+        dump($e-&gt;getMessage());
+    }
+
+// ==================================================================
+
+    // 开启事务
+    Db::startTrans();
+
+    // 删除数据 33
+    $a=Db::table(&quot;user&quot;)-&gt;delete(33);
+    // 删除数据 34
+    $b=Db::table(&quot;user&quot;)-&gt;delete(34);
+
+    // 判断条件
+    if ($a &amp;&amp; $b) {
+        // 提交事务
+        Db::commit();
+    }else{
+        // 回滚事务
+        Db::rollback();
+    }
+</code></pre><p>第8章 TP5.0 模型<br>1、模型(model)</p>
+<p>数据模型</p>
+<p>2、新建数据模型</p>
+<p>1) 手动新建<br>a、打开前台模块(C:\AppServ\www\tp5\application\index)<br>            新建model目录<br>        b、在model目录下 新建 User.php</p>
+<pre><code>// 声明命名空间
+namespace app\index\model;
+// 导入系统的数据模型
+use think\Model;
+
+// 声明user模型
+
+class User extends Model{
+
+}
+</code></pre><p>2) 命令新建<br>1) 切换到项目目录</p>
+<pre><code>php think make:model app\index\model\Users
+</code></pre><p>3) 注意<br>        1、数据模型的名字 建议大家跟数据库名一致<br>        2、如果数据库名字和模型名不一致 可以设置表名<br>            protected $table=””;<br>        3、如果表名(yzm_user),数据模型名 (YzmUser)</p>
+<p>3、模型的实例化<br>    1、调用静态方法</p>
+<pre><code>$res=User::get(1);
+dump($res-&gt;toArray());
+</code></pre><p>2、实例化数据模型</p>
+<pre><code>$user=new User();
+$res=$user::get(2);
+dump($res-&gt;toArray());
+</code></pre><p>3、使用loader</p>
+<pre><code>$user=Loader::model(&quot;user&quot;);
+$res=$user::get(3);
+dump($res-&gt;toArray());
+</code></pre><p>4、使用助手函数</p>
+<pre><code>$user=model(&quot;user&quot;);
+$res=$user::get(4);
+dump($res-&gt;toArray());
+</code></pre><p>4、查询操作<br>    1、单条数据</p>
+<pre><code>// get方法
+    // 使用数字
+    $res=User::get(1); // 默认主键
+    // 使用数组
+    $res=User::get([&quot;name&quot;=&gt;&apos;yzmedu3&apos;]);  // 默认查找用户名
+
+    // 使用闭包函数
+    $res=User::get(function($query){
+        $query-&gt;where(&quot;id&quot;,15);
+    });
+// find方法
+
+    $res=User::where(&quot;id&quot;,13)-&gt;find();
+</code></pre><p>2、查询多条数据</p>
+<pre><code>// all
+    // 所有数据
+    $res=User::all();
+
+    // 字符串
+    $res=User::all(&quot;1,2,3&quot;);
+
+    // 数组
+    $res=User::all([5,6,7]);
+
+    // 数组
+
+    $res=User::all([&apos;pass&apos;=&gt;&apos;123&apos;]);
+
+    // 闭包
+
+    $res=User::all(function($query){
+        $query-&gt;where(&quot;pass&quot;,&quot;123&quot;)
+            -&gt;whereOr(&quot;pass&quot;,&quot;456&quot;)
+            -&gt;order(&quot;id&quot;,&quot;desc&quot;);
+    });
+
+// select 和 all 基本类似
+
+    $res=User::select();
+    $res=User::limit(2)-&gt;select();
+</code></pre><p>3、获取某个字段和某列值</p>
+<pre><code>// 获取某个值
+$res=User::where(&quot;id&quot;,5)-&gt;value(&quot;name&quot;);
+
+// 获取某列值
+
+$res=User::column(&quot;name&quot;,&quot;id&quot;);
+</code></pre><p>4、动态查询</p>
+<pre><code>// 查询出匹配到的第一条数据
+// getBy字段名
+$res=User::getByAge(&apos;44&apos;);
+dump($res-&gt;toArray());
+</code></pre><p>5、增加操作</p>
+<p>1、设置属性</p>
+<pre><code>$user=new User();
+$user-&gt;name=&quot;yzmedu21&quot;;
+$user-&gt;pass=&quot;abc&quot;;
+$user-&gt;age=18;
+// 返回影响行数
+$user-&gt;save();
+</code></pre><p>2、通过data方法</p>
+<pre><code>$user=new User();
+
+$user-&gt;data([
+    &quot;name&quot;=&gt;&quot;yzmedu22&quot;,
+    &quot;age&quot;=&gt;&quot;22&quot;,
+    &quot;pass&quot;=&gt;&quot;qwe&quot;,
+    ]);
+
+// 返回影响行数
+$user-&gt;save();
+</code></pre><p>3、实例化时</p>
+<pre><code>$user=new User([
+    &quot;name&quot;=&gt;&quot;yzmedu23&quot;,
+    &quot;pass&quot;=&gt;&apos;zxc&apos;,
+    &quot;age&quot;=&gt;20
+    ]);
+// 返回影响行数
+$user-&gt;save();
+// allowField 屏蔽掉数据库中不存在的字段
+$user-&gt;allowField(true)-&gt;save();
+// 指定插入数据库的字段
+$user-&gt;allowField([&apos;name&apos;,&apos;age&apos;])-&gt;save();
+</code></pre><p>   4、获取自增的ID<br>        // 获取插入数据ID<br>        echo $user-&gt;id;</p>
+<p>   5、增加多条数据</p>
+<pre><code>$user=new User();
+
+$list=[
+    [&apos;name&apos;=&gt;&quot;yzmedu33&quot;,&quot;age&quot;=&gt;33],
+    [&apos;name&apos;=&gt;&quot;yzmedu34&quot;,&quot;age&quot;=&gt;34]
+
+];
+
+$user-&gt;saveAll($list);
+</code></pre><p>   6、create方法</p>
+<pre><code>$user=User::create([
+    &quot;name&quot;=&gt;&quot;yzmedu35&quot;,
+    &quot;age&quot;=&gt;35
+    ]);
+</code></pre><p>6、删除操作</p>
+<pre><code>// $user=User::get(1);
+// 返回影响行数
+// dump($user-&gt;delete());
+
+// 删除主键2
+$user=User::destroy(2);
+
+// 删除主键3,4,5
+$user=User::destroy(&quot;3,4,5&quot;);
+$user=User::destroy([6,7,8]);
+
+// 删除name
+$user=User::destroy([&apos;name&apos;=&gt;&quot;yzmedu23&quot;]);
+
+// 删除多个条件
+$user=User::destroy([&apos;name&apos;=&gt;&apos;yzmedu33&apos;,&apos;age&apos;=&gt;33]);
+
+// 使用闭包
+$user=User::destroy(function($query){
+    $query-&gt;where(&quot;id&quot;,&quot;&lt;&quot;,&quot;15&quot;);
+});
+// 删除数据
+$user=User::where(&quot;id&quot;,&quot;&gt;&quot;,&quot;19&quot;)-&gt;delete();
+dump($user);
+</code></pre><p>7、修改操作</p>
+<pre><code>// 设置字段更新数据
+
+       $user=User::get(15);
+
+       $user-&gt;age=19;
+
+       $res=$user-&gt;save();
+
+// 直接数组修改
+
+    $user=new User;
+
+    $res=$user-&gt;save(
+        [
+            &quot;pass&quot;=&gt;&quot;qweasd&quot;,
+            &quot;age&quot;=&gt;16,
+
+        ],[&quot;id&quot;=&gt;16]);
+
+// 修改数据
+
+    $_POST[&apos;name&apos;]=&quot;yzmedu55&quot;;
+    $_POST[&apos;pass&apos;]=&quot;pass55&quot;;
+    $_POST[&apos;age&apos;]=&quot;55&quot;;
+    $_POST[&apos;sex&apos;]=&quot;nan&quot;;
+    $_POST[&apos;id&apos;]=17;
+
+    $user=new User;
+
+    $res=$user-&gt;allowField([&apos;name&apos;,&apos;pass&apos;,&apos;age&apos;])-&gt;save($_POST,[&apos;id&apos;=&gt;17]);
+
+// 批量更新
+
+
+    $data=[
+        [&apos;id&apos;=&gt;15,&apos;name&apos;=&gt;&quot;abc&quot;,&apos;pass&apos;=&gt;456],
+        [&apos;id&apos;=&gt;17,&apos;name&apos;=&gt;&quot;abc&quot;,&apos;pass&apos;=&gt;456],
+    ];
+
+    $user=new User;
+
+    $res=$user-&gt;saveAll($data);
+
+    echo User::getLastSql();
+
+// 更新操作
+
+    $user=new User;
+
+    $res=$user-&gt;where(&quot;id&quot;,&apos;&gt;&apos;,&apos;17&apos;)-&gt;update([&apos;age&apos;=&gt;18]);
+
+    $res=User::where(&quot;id&quot;,&quot;&lt;&quot;,&quot;18&quot;)-&gt;update([&apos;pass&apos;=&gt;&apos;zxc&apos;]);
+
+// 闭包更新数据
+
+    $user=new User;
+
+    $res=$user-&gt;save([&apos;name&apos;=&gt;&apos;yunzhimeng&apos;],function($query){
+        $query-&gt;where(&quot;id&quot;,&quot;15&quot;);
+    });
+</code></pre><p>8、聚合</p>
+<pre><code>// 统计数据条数
+$tot=User::count();
+
+dump($tot);
+
+// 条件判断
+$tot=User::where(&quot;age&quot;,&quot;&gt;&quot;,18)-&gt;count();
+dump($tot);
+
+// 统计最大值
+
+$max=User::max(&apos;age&apos;);
+
+dump($max);
+
+// 统计最小值
+
+$min=User::min(&quot;age&quot;);
+
+dump($min);
+
+// 平均值
+$avg=User::avg(&apos;age&apos;);
+
+dump($avg);
+
+// 求和
+$sum=User::sum(&apos;age&apos;);
+dump($sum);
+</code></pre><p>9、获取器<br>1、数据模型</p>
+<pre><code>// sex 的获取器
+public function getSexAttr($val){
+    switch ($val) {
+        case &apos;0&apos;:
+            return &quot;未知&quot;;
+            break;
+        case &quot;1&quot;:
+            return &quot;男&quot;;
+            break;
+        case &quot;2&quot;:
+            return &quot;女&quot;;
+            break;
+    }
+}
+</code></pre><p>2、控制器</p>
+<pre><code>// 获取ID为15 的数据
+$user=User::get(17);
+
+// 经过获取器的操作
+dump($user-&gt;toArray()); 
+dump($user-&gt;sex);
+
+// 不经过获取器处理
+dump($user-&gt;getData());
+</code></pre><p>3、注意<br>        1、如果字段 user_status 修改器名字getUserStatusAttr<br>        2、如果字段 status 修改器名字getStatusAttr</p>
+<p>10、修改器<br>    1、数据模型</p>
+<pre><code>// 用户密码的修改器
+
+public function setPassAttr($val){
+
+    return md5($val);
+}
+</code></pre><p>2、控制器</p>
+<pre><code>// 修改 ID 为15 的密码
+
+$user=new User();
+
+// 密码会实现自动加密
+$res=$user-&gt;save([&apos;pass&apos;=&gt;&apos;456&apos;],[&apos;id&apos;=&gt;15]);
+
+dump($res);
+</code></pre><p>3、注意</p>
+<pre><code>1、修改器的触发条件是 save方法
+</code></pre><p>11、自动完成</p>
+<p>1、修改器和自动完成区别<br>       修改器:数据赋值的时候自动进行转换处理<br>        自动完成:没有手动赋值的情况下进行手动处理</p>
+<p>   2、自动完成</p>
+<pre><code>// 增加和修改操作都会执行
+protected $auto=[];
+// 创建数据执行
+protected $insert=[&apos;create_time&apos;];
+// 修改数据执行
+protected $update=[&apos;update_time&apos;];
+</code></pre><p>12、时间戳</p>
+<p>1、系统支持自动写入创建和更新的时间戳字段<br>        1) 在配置文件中设置</p>
+<pre><code>// 自动写入时间戳字段
+&apos;auto_timestamp&apos;  =&gt; true,
+</code></pre><p>2) 在数据模型中设置</p>
+<pre><code>// 设置自动写入时间戳
+protected $autoWriteTimestamp=true;
+</code></pre><p>2、可以设置字段默认值</p>
+<pre><code>// 增加时间的字段
+protected $createTime=&apos;create_times&apos;;
+// 更新时间的字段
+protected $updateTime=&apos;update_times&apos;;
+</code></pre><p>3、取消更新时间戳设置</p>
+<pre><code>protected $updateTime=false;
+</code></pre><p>14、软删除</p>
+<p>1、作用：<br>        实现假删除，可以进行恢复</p>
+<p>2、实现</p>
+<pre><code>&lt;?php 
+    // 声明命名空间
+    namespace app\index\model;
+    // 导入系统的数据模型
+    use think\Model;
+    // 配合软删除
+    use traits\model\SoftDelete;
+    // 声明user模型
+    class User extends Model{
+        // 使用软删除
+        use SoftDelete;
+        // 设置删除的时间戳
+        protected $deleteTime=&quot;delete_times&quot;;
+
+    }
+</code></pre><p>3、控制器<br>        1、删除数据<br>            $res=User::destroy(15);<br>        2、获取数据<br>            $res=User::get(15);<br>            // 软删除 数据库数据存在，但是get获取不到<br>        3、直接删除数据</p>
+<pre><code>$res=User::destroy(14,true);
+
+$user=new User();
+
+$res=$user-&gt;where(&quot;id&quot;,&apos;5&apos;)-&gt;delete();
+</code></pre><p>   4、读取所有数据包含软删除数据</p>
+<pre><code>$res=User::withTrashed()-&gt;find(15);
+$res=User::withTrashed()-&gt;select();
+</code></pre><p>5、仅仅读取软删除数据</p>
+<pre><code>$res=User::onlyTrashed()-&gt;select();
+$res=User::onlyTrashed()-&gt;find(1);
+</code></pre><p>第八章 shop案例出现的各种问题<br>1.自动生成目录结构<br>1.位置   D:\wamp\www\shop\build.php<br>2.规则<br>      ○ <strong>dir</strong> 表示生成目录（支持多级目录）<br>      ○ <strong>file</strong> 表示生成文件（不定义默认会生成 config.php 文件）<br>      ○ controller 表示生成controller类<br>      ○ model表示生成model类<br>      ○ view表示生成html文件（支持子目录）<br>example:</p>
+<p>3.命令行生成</p>
+<blockquote>
+<p>php think build  //默认会读取应用目录application下面的build.php 作为自动生成的定义文件<br>php think build –config build.php  //表示读取根目录下的build.php文件</p>
+</blockquote>
+<p>2.Validate<br>1.ThinkPHP5.0验证使用独立的\think\Validate类或者验证器进行验证。<br>2.用法：<br>1.</p>
+<p>2.</p>
+<p>3.方法在\www\shop\thinkphp\library\think\Validate.php中</p>
+<p>3.百度地图<br>1.根据地址获取经纬度类的封装<br>开发—web服务开发找到geocoding api</p>
+<p>2.根据经纬度地址调取百度地图</p>
+<p>3.用法：<br>1.设置参数（www\shop\application\extra\map.php</p>
+<p>2.写获取URL的相关方法：（www\shop\application\common.php</p>
+<p>3.根据地址获取经纬度类的封装（D:\wamp\www\shop\extend\Map.php</p>
+<p>4.根据经纬度地址调取百度地图</p>
+<p>5.调用（www\shop\application\index\controller\Index.php</p>
+<p>6.在模板中调用</p>
+<p>4.利用phpmailer发送邮件<br>1.下载phpmailer.zip<br>2.创建phpmailer文件夹（在extend下</p>
+<p>3.新建Email.php（方法内写test参数</p>
+<p>4.调用<br>\phpmailer\Email::send(参数);<br>5.上传图片<br>1.下载uploadity.zip<br>2.编写image.js</p>
+
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/2017/11/20/web前端/" class="prev">&larr; Prev post web前端</a>
+  
+
+  
+
+  
+    <a href="/2017/11/20/hexo建立博客/" class="next">Next post hexo建立博客 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      Site by Gail using
+      <a href="http://hexo.io">Hexo</a> & <a href="https://github.com/stiekel/hexo-theme-random">Random</a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://ozp0vvyub.bkt.clouddn.com/blog/171120/2m4Iee8bgm.jpg?imageslim">
+    <p id="description"></p>
+    <ul class="social-icon">
+  
+  
+    <li>
+      <a href="https://github.com/xxgail">
+        
+          <i class="icon iconfont github">&#xe606;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://www.zhihu.com/people/gai-zi-gu-niang">
+        
+          <i class="icon iconfont zhihu">&#xe60b;</i>
+        
+      </a>
+    </li>
+  
+    <li>
+      <a href="https://weibo.com/3622325845/profile?topnav=1&wvr=6">
+        
+          <i class="icon iconfont weibo">&#xe602;</i>
+        
+      </a>
+    </li>
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+    
+      backgroundImages.push('http://ozp0vvyub.bkt.clouddn.com/blog/171120/g3I4c2K3mk.jpg?imageslim');
+    
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["slideLeft2","slideRight2","flash2"],"timer":true,"delay":5000,"shuffle":true,"count":28};
+var unsplashConfig = {"gravity":"north"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+  turnoffBackgroundImage = true;
+
+
+var backgroundColor = "";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
+</body>
+</html>
+
