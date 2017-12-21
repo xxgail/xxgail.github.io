@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  
+  <title>PHP生成验证码 | xxGail&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="用PHP制作验证码">
+<meta name="keywords" content="php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP生成验证码">
+<meta property="og:url" content="http://xxgail.github.io/2017/11/29/PHP生成验证码/index.html">
+<meta property="og:site_name" content="xxGail&#39;s Blog">
+<meta property="og:description" content="用PHP制作验证码">
+<meta property="og:updated_time" content="2017-11-29T05:58:19.093Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP生成验证码">
+<meta name="twitter:description" content="用PHP制作验证码">
+  
+  
+    <link rel="icon" href="http://ozp0vvyub.bkt.clouddn.com/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+  
+
+</head>
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <nav id="upper-nav" class="inner">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <div class="sub-nav">
+        
+        
+          <a id="nav-github" class="nav-icon" href="https://github.com/xxgail"></a>
+        
+      </div>
+    </nav>
+    <div id="header-title">
+      
+        <h1 id="blog-title-wrap">
+          <a href="/" id="blog-title">xxGail&#39;s Blog</a>
+        </h1>
+      
+    </div>
+    <div id="contenedor">
+      <ul class="cube">
+        <li class="cara">W</li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+      </ul>
+    </div>
+    <nav id="main-nav">
+      
+        <a class="main-nav-link" href="/">Home</a>
+      
+        <a class="main-nav-link" href="/archives">Archives</a>
+      
+        <a class="main-nav-link" href="/about">About</a>
+      
+      <a class="main-nav-link st-search-show-outputs">Search</a>
+    </nav>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-PHP生成验证码" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2017/11/29/PHP生成验证码/" class="article-date">
+  <time datetime="2017-11-29T05:57:21.000Z" itemprop="datePublished">2017-11-29</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP生成验证码
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p>用PHP制作验证码<br><a id="more"></a></p>
+<ol>
+<li><p>生成底图(GD库):</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$image = imagecreatetruecolor(<span class="number">100</span>, <span class="number">30</span>);<span class="comment">//创建一个宽100高30的（默认）黑色图片</span></span><br><span class="line">$bgcolor = imagecolorallocate($image,<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>);<span class="comment">//为资源创建颜色</span></span><br><span class="line">imagefill($image, <span class="number">0</span>, <span class="number">0</span>, $bgcolor);<span class="comment">//将创造的颜色铺满图片    </span></span><br><span class="line"></span><br><span class="line"><span class="comment">//在所有输出面前加一个格式</span></span><br><span class="line">header(<span class="string">'content-type:image/png'</span>);</span><br><span class="line">imagepng($image);</span><br><span class="line"><span class="comment">// end 将资源销毁</span></span><br><span class="line">imagedestroy($image);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加入干扰元素:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//加入干扰点</span></span><br><span class="line"><span class="keyword">for</span>($i=<span class="number">0</span>;$i&lt;<span class="number">200</span>;$i++)&#123;</span><br><span class="line">		$pointcolor = imagecolorallocate($image,rand(<span class="number">50</span>,<span class="number">200</span>),rand(<span class="number">50</span>,<span class="number">200</span>),rand(<span class="number">50</span>,<span class="number">200</span>));<span class="comment">//定义点的颜色</span></span><br><span class="line">		imagesetpixel($image,rand(<span class="number">1</span>,<span class="number">99</span>),rand(<span class="number">1</span>,<span class="number">29</span>), $pointcolor); <span class="comment">//画一个单一像素。资源图片，坐标，点</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//加入干扰线</span></span><br><span class="line">	<span class="keyword">for</span> ($i=<span class="number">0</span>; $i &lt; <span class="number">3</span>; $i++) &#123; </span><br><span class="line">		$linecolor = imagecolorallocate($image, rand(<span class="number">80</span>,<span class="number">220</span>),rand(<span class="number">80</span>,<span class="number">220</span>),rand(<span class="number">80</span>,<span class="number">220</span>));</span><br><span class="line">		imageline($image,rand(<span class="number">1</span>,<span class="number">99</span>),rand(<span class="number">1</span>,<span class="number">29</span>),rand(<span class="number">1</span>,<span class="number">99</span>),rand(<span class="number">1</span>,<span class="number">29</span>),$linecolor);<span class="comment">//画一条线段。有起始和终止坐标</span></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成验证内容(字母数字混合):</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">   $captch_code=<span class="string">''</span>;</span><br><span class="line"><span class="comment">//为验证码生成字母数字的混合</span></span><br><span class="line"><span class="keyword">for</span> ($i=<span class="number">0</span>; $i &lt; <span class="number">4</span>; $i++) &#123; </span><br><span class="line">	$fontsize = <span class="number">6</span>;                                                                                                         </span><br><span class="line">	$fontcolor = imagecolorallocate($image,rand(<span class="number">0</span>,<span class="number">120</span>),rand(<span class="number">0</span>,<span class="number">120</span>),rand(<span class="number">0</span>,<span class="number">120</span>));</span><br><span class="line">   </span><br><span class="line">	$data = <span class="string">'abcdefghijkmnopqrstuvwxy3456789'</span>;</span><br><span class="line">	$fontcontent = substr($data,rand(<span class="number">0</span>,strlen($data)),<span class="number">1</span>);</span><br><span class="line">	$captch_code .=$fontcontent;</span><br><span class="line">   </span><br><span class="line">	$x = ($i*<span class="number">100</span>/<span class="number">4</span>)+rand(<span class="number">5</span>,<span class="number">10</span>);</span><br><span class="line">	$y = rand(<span class="number">5</span>,<span class="number">10</span>);</span><br><span class="line">   </span><br><span class="line">	imagestring($image, $fontsize, $x, $y, $fontcontent, $fontcolor);</span><br><span class="line">   	&#125;</span><br><span class="line">   	$_SESSION[<span class="string">'authcode'</span>] = $captch_code;<span class="comment">//保存在表单信息中</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成验证内容(图片验证):</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$table = <span class="keyword">array</span>(</span><br><span class="line">		<span class="string">'pic0'</span>=&gt;<span class="string">'狗'</span>,</span><br><span class="line">		<span class="string">'pic1'</span>=&gt;<span class="string">'猫'</span>,</span><br><span class="line">		<span class="string">'pic2'</span>=&gt;<span class="string">'鸡'</span>,</span><br><span class="line">		<span class="string">'pic3'</span>=&gt;<span class="string">'兔'</span>,</span><br><span class="line">		);<span class="comment">//创建一个数组将图库中的图片与验证码信息对应起来</span></span><br><span class="line"></span><br><span class="line">	$index = rand(<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">	$value = $table[<span class="string">'pic'</span>.$index];</span><br><span class="line">	$_SESSION[<span class="string">'authcode'</span>] = $value;<span class="comment">//存到session中</span></span><br><span class="line"></span><br><span class="line">	$filename = dirname(<span class="keyword">__FILE__</span>).<span class="string">'\\pic'</span>.$index.<span class="string">'.jpg'</span>;<span class="comment">//物料，找到文件</span></span><br><span class="line">	$contents = file_get_contents($filename);<span class="comment">//取得内容</span></span><br><span class="line"></span><br><span class="line">	header(<span class="string">'content-type:image/jpg'</span>);</span><br><span class="line">	<span class="keyword">echo</span> $contents;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成验证内容(汉字):</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">//GBK编码时，需要将中文通过 iconv() 转化为utf-8</span></span><br><span class="line">   $fontface = <span class="string">'simkai.ttf'</span>;<span class="comment">//需要一个可以显示中文的字体</span></span><br><span class="line">$str = <span class="string">"小盖最帅"</span>;<span class="comment">//汉字库</span></span><br><span class="line">$strdb = str_split($str,<span class="number">3</span>);<span class="comment">//在utf-8中一个汉字占3个字符</span></span><br><span class="line">$captch_code=<span class="string">''</span>;</span><br><span class="line"><span class="comment">//为验证码生成汉字</span></span><br><span class="line"><span class="keyword">for</span> ($i=<span class="number">0</span>; $i &lt; <span class="number">4</span>; $i++) &#123; </span><br><span class="line">       $fontcolor = imagecolorallocate($image,rand(<span class="number">0</span>,<span class="number">120</span>),rand(<span class="number">0</span>,<span class="number">120</span>),rand(<span class="number">0</span>,<span class="number">120</span>));</span><br><span class="line">   </span><br><span class="line">    $index = rand(<span class="number">0</span>,count($strdb));</span><br><span class="line">	$cn = $strdb[$index];</span><br><span class="line">	$captch_code.=$cn;</span><br><span class="line">   </span><br><span class="line">	imagettftext($image, mt_rand(<span class="number">20</span>,<span class="number">24</span>), mt_rand(<span class="number">-60</span>,<span class="number">60</span>), (<span class="number">40</span>*$i+<span class="number">20</span>), mt_rand(<span class="number">30</span>,<span class="number">35</span>), $fontcolor, $fontface,$cn);</span><br><span class="line">   	&#125;</span><br><span class="line">   	$_SESSION[<span class="string">'authcode'</span>] = $captch_code;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用session来检验:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_REQUEST[<span class="string">'authcode'</span>])) &#123;</span><br><span class="line">	session_start();<span class="comment">//在验证码的代码开头必须加上这句话</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (strtolower($_REQUEST[<span class="string">'authcode'</span>]) == $_SESSION[<span class="string">'authcode'</span>]) &#123;</span><br><span class="line">		header(<span class="string">'Content-type: text/html; charset=UTF8'</span>); </span><br><span class="line">		<span class="keyword">echo</span> <span class="string">'&lt;font color="#0000CC"&gt;输入正确&lt;/font&gt;'</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		header(<span class="string">'Content-type: text/html; charset=UTF8'</span>); </span><br><span class="line">		<span class="keyword">echo</span> <span class="string">'&lt;font color="#CC0000"&gt;&lt;b&gt;输入错误&lt;/b&gt;&lt;/font&gt;'</span>;</span><br><span class="line">	&#125;<span class="comment">//相同返回正确，否则返回错误</span></span><br><span class="line">	<span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>利用Ajax来小部分刷新:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">action</span>=<span class="string">"./form.php"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>验证码图片：</span><br><span class="line">		<span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">"captcha_img"</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">src</span>=<span class="string">"./captcha.php?r=&lt;?php echo rand();?&gt;"</span> <span class="attr">width</span>=<span class="string">"200"</span> <span class="attr">height</span>=<span class="string">"60"</span> &gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:void(0)"</span> <span class="attr">onClick</span>=<span class="string">"document.getElementById('captcha_img').src='./captcha.php?r='+Math.random()"</span>&gt;</span>换一个？<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--Ajax--&gt;</span></span><br><span class="line">		<span class="comment">&lt;!--此处改变验证内容只需改变src即可--&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>请输入图片中的内容：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"authcode"</span> <span class="attr">value</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span> <span class="attr">style</span>=<span class="string">"padding: 6px 20px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+        <a data-url="http://xxgail.github.io/2017/11/29/PHP生成验证码/" data-id="cjb4fuvsq000cqkmex738y62c" class="article-share-link">Share</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/11/24/WampServer的安装使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">WampServer</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/11/29/PHP生成验证码/">PHP生成验证码</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/24/WampServer的安装使用/">WampServer</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/20/摘-抄/">摘.抄</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/20/CodeIgniter笔记/">CodeIgniter笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/20/ThinkPHP5.0笔记/">ThinkPHP5.0笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/摘抄/">摘抄</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书/">读书</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Gail<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+  
+
+<!-- totop start -->
+<div id="totop">
+	<a title="To Top"></a>
+</div>
+<!-- totop end -->
+
+<!-- swiftype search start -->
+
+<!-- swiftype search end -->
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>

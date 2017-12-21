@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  
+  <title>Git | xxGail&#39;s Blogs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="git的使用，参照廖雪峰老师的课程">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git">
+<meta property="og:url" content="http://yoursite.com/2017/11/20/Git/index.html">
+<meta property="og:site_name" content="xxGail&#39;s Blogs">
+<meta property="og:description" content="git的使用，参照廖雪峰老师的课程">
+<meta property="og:image" content="http://note.youdao.com/noteshare?id=f32d02f2663068d52c260a6f70d18d00">
+<meta property="og:updated_time" content="2017-12-21T09:28:59.403Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git">
+<meta name="twitter:description" content="git的使用，参照廖雪峰老师的课程">
+<meta name="twitter:image" content="http://note.youdao.com/noteshare?id=f32d02f2663068d52c260a6f70d18d00">
+  
+  
+    <link rel="icon" href="http://ozp0vvyub.bkt.clouddn.com/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+  
+
+</head>
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <nav id="upper-nav" class="inner">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <div class="sub-nav">
+        
+        
+          <a id="nav-github" class="nav-icon" href="https://github.com/xxgail"></a>
+        
+      </div>
+    </nav>
+    <div id="header-title">
+      
+        <h1 id="blog-title-wrap">
+          <a href="/" id="blog-title">xxGail&#39;s Blogs</a>
+        </h1>
+      
+    </div>
+    <div id="contenedor">
+      <ul class="cube">
+        <li class="cara">W</li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+      </ul>
+    </div>
+    <nav id="main-nav">
+      
+        <a class="main-nav-link" href="/">Home</a>
+      
+        <a class="main-nav-link" href="/archives">Archives</a>
+      
+        <a class="main-nav-link" href="/about">About</a>
+      
+      <a class="main-nav-link st-search-show-outputs">Search</a>
+    </nav>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-Git" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2017/11/20/Git/" class="article-date">
+  <time datetime="2017-11-20T06:47:04.000Z" itemprop="datePublished">2017-11-20</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        <p>git的使用，参照廖雪峰老师的课程<br><a id="more"></a></p>
+<h3 id="1-初始化"><a href="#1-初始化" class="headerlink" title="1.初始化"></a>1.初始化</h3><ol>
+<li>下载Git终端</li>
+<li>初始化一个git仓库  <strong>$ git init</strong> (创建文件readme.txt)</li>
+<li>将文件添加到暂存区  <strong>$ git add readme.txt</strong> (可以出现多个add)</li>
+<li>提交  <strong>$ git commit -m “提交说明(备注)”</strong></li>
+</ol>
+<h3 id="2-掌握工作区的状态"><a href="#2-掌握工作区的状态" class="headerlink" title="2.掌握工作区的状态"></a>2.掌握工作区的状态</h3><ol>
+<li>掌握工作区的状态  <strong>$ git status</strong></li>
+<li>查看修改内容  <strong>$ git diff</strong></li>
+</ol>
+<h3 id="3-历史记录"><a href="#3-历史记录" class="headerlink" title="3.历史记录"></a>3.历史记录</h3><ol>
+<li>记录  <strong>$ git log</strong> (log中的一大串类似于乱码的东西是commit id)</li>
+<li>回到之前的版本  <strong>$ git reset –hard HEAD^</strong> (HEAD后面有几个^就是倒数第几个版本，往上一百个版本是 HEAD~100)</li>
+<li>退回后log发送变化，则可以根据 <strong>$ git reset –hard commit id</strong> 来修改</li>
+<li>预览此刻的readme.txt  <strong>$ cat readme.txt</strong></li>
+<li>记录每次命令，可以用来查看commit id <strong>$ git reflog</strong></li>
+</ol>
+<h3 id="4-撤回修改"><a href="#4-撤回修改" class="headerlink" title="4.撤回修改"></a>4.撤回修改</h3><ol>
+<li>若只在工作区 <strong>$ git checkout –readme.txt</strong></li>
+<li>若提交到暂存区  先用<strong>$ git reset HEAD readme.txt</strong> ,再用1即可</li>
+<li>若提交到版本区，则用版本回退  <strong>$ git reset –hard HEAD^</strong></li>
+</ol>
+<h3 id="5-删除"><a href="#5-删除" class="headerlink" title="5.删除"></a>5.删除</h3><ol>
+<li>在文件夹中删除或用终端 $rm 之后</li>
+<li>误删：从版本库中恢复  <strong>$ git checkout –readme.txt</strong></li>
+<li>彻底删除 <strong>$ git rm readme.txt</strong></li>
+</ol>
+<h3 id="6-远程关联GitHub和码云"><a href="#6-远程关联GitHub和码云" class="headerlink" title="6.远程关联GitHub和码云"></a>6.远程关联GitHub和码云</h3><ol>
+<li>新建同名项目 learngit</li>
+<li></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$ git remote add github git@github.com:Gail-Guo/learngit.git</td>
+<td>GitHub</td>
+</tr>
+<tr>
+<td>$ git remote rm github</td>
+<td>GitHub删除关联</td>
+</tr>
+<tr>
+<td>$ git push github master(第一次更新在push后加-u)</td>
+<td>Github更新</td>
+</tr>
+<tr>
+<td>$ git remote add gitee git@gitee.com:isgail/learn.git</td>
+<td>码云</td>
+</tr>
+<tr>
+<td>$ git remote rm gitee</td>
+<td>码云删除关联</td>
+</tr>
+<tr>
+<td>$ git push gitee master</td>
+<td>码云更新</td>
+</tr>
+</tbody>
+</table>
+<h3 id="7-从GitHub上克隆"><a href="#7-从GitHub上克隆" class="headerlink" title="7.从GitHub上克隆"></a>7.从GitHub上克隆</h3><ol>
+<li><strong>$ git clone git@github.com:Gail-Guo/项目.git</strong></li>
+</ol>
+<h3 id="8-分支"><a href="#8-分支" class="headerlink" title="8.分支"></a>8.分支</h3><ol>
+<li>创建分支并合并</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$ git checkout -b dev</td>
+<td>创建dev分支并切换</td>
+</tr>
+<tr>
+<td>$ git branch dev</td>
+<td>创建分支</td>
+</tr>
+<tr>
+<td>$ git checkout dev</td>
+<td>切换到dev</td>
+</tr>
+<tr>
+<td>$ git branch</td>
+<td>查看当前分支</td>
+</tr>
+<tr>
+<td>$ git merge dev</td>
+<td>合并到master(先切换到master)</td>
+</tr>
+<tr>
+<td>$ git branch -d dev</td>
+<td>删除分支</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>产生冲突可以修改之后再提交</li>
+<li><strong>$ git log –graph</strong> 可以看到分支合并图</li>
+<li>禁用fast forward 的参数 –no-f</li>
+</ol>
+<h3 id="9-bug"><a href="#9-bug" class="headerlink" title="9.bug"></a>9.bug</h3><ol>
+<li>修复bug时，会通过建立新的bug分支进行修复，然后合并删除分支</li>
+<li>将当前工作储藏起来 <strong>$ git stash</strong></li>
+<li>恢复1 <strong>$ git stash apply –&gt; $ git stash drop</strong></li>
+<li>恢复2 <strong>$ git stash pop</strong></li>
+<li>查看工作现场 <strong>$ git stash list</strong></li>
+<li>丢弃一个未合并的分支，强行删除 <strong>$ git branch -D dev</strong></li>
+</ol>
+<h3 id="10-标签"><a href="#10-标签" class="headerlink" title="10.标签"></a>10.标签</h3><ol>
+<li>创建tag <strong>$ git tag V1.0</strong></li>
+<li>查看 <strong>$ git tag</strong></li>
+<li>查看tag具体信息 <strong>$ git show V1.0</strong></li>
+<li>删除 <strong>$ git tag -d V1.0</strong></li>
+<li>推送到GitHub <strong>$ git push github –tags</strong></li>
+<li>从远程删除 <strong>$ git push github:refs/tags/V1.0</strong></li>
+</ol>
+<h3 id="11-配置别名"><a href="#11-配置别名" class="headerlink" title="11.配置别名"></a>11.配置别名</h3><ol>
+<li>$ git config –global alias.别名 原命令</li>
+</ol>
+<h3 id="12"><a href="#12" class="headerlink" title="12."></a>12.</h3><p><img src="http://note.youdao.com/noteshare?id=f32d02f2663068d52c260a6f70d18d00" alt="image"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
+
+        <a data-url="http://yoursite.com/2017/11/20/Git/" data-id="cjbgamwao000kigtalfvzv40w" class="article-share-link">分享到</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/11/20/CodeIgniter笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          CodeIgniter笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/20/php笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">php笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/21/WampServer/">WampServer</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/21/PHP生成验证码/">PHP生成验证码</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/20/摘-抄/">摘.抄</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/20/ThinkPHP5.0笔记/">ThinkPHP5.0笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/20/CodeIgniter笔记/">CodeIgniter笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">標簽</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/app/">app</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/摘抄/">摘抄</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书/">读书</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">歸檔</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">7</span></li></ul>
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 xxGail<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
+    </div>
+  </div>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+  <a href="#search" class="mobile-nav-link st-search-show-outputs">Search</a>
+</nav>
+  
+
+<!-- totop start -->
+<div id="totop">
+	<a title="返回頂部"></a>
+</div>
+<!-- totop end -->
+
+<!-- swiftype search start -->
+
+<!-- swiftype search end -->
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>
