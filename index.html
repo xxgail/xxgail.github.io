@@ -103,28 +103,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+        <p>MySQL是世界上最好的SQL。(一本正经<br>
         
-        <h2 id="1-MySql-Host-is-blocked-because-of-many-connection-errors-unblock-with-‘mysqladmin-flush-hosts’-解决方法"><a href="#1-MySql-Host-is-blocked-because-of-many-connection-errors-unblock-with-‘mysqladmin-flush-hosts’-解决方法" class="headerlink" title="1.MySql Host is blocked because of many connection errors; unblock with ‘mysqladmin flush-hosts’ 解决方法"></a>1.MySql Host is blocked because of many connection errors; unblock with ‘mysqladmin flush-hosts’ 解决方法</h2><ul>
-<li>环境：linux，mysql5.6</li>
-<li>软件: Navicat</li>
-<li>错误：Host is blocked because of many connection errors; unblock with ‘mysqladmin flush-hosts’</li>
-<li>原因:　同一个ip在短时间内产生太多（超过mysql数据库max_connection_errors的最大值）中断的数据库连接而导致的阻塞；</li>
-<li>解决方法：</li>
-</ul>
-<ol>
-<li>提高允许的max_connection_errors数量（治标不治本）：<ul>
-<li>进入Mysql数据库查看max_connection_errors： show variables like ‘%max_connection_errors%’; </li>
-<li>修改max_connection_errors的数量为1000： set global max_connect_errors = 1000;</li>
-<li>查看是否修改成功：show variables like ‘%max_connection_errors%’;</li>
-</ul>
-</li>
-<li>使用mysqladmin flush-hosts 命令清理一下hosts文件（不知道mysqladmin在哪个目录下可以使用命令查找：whereis mysqladmin）；<ul>
-<li>在查找到的目录下使用命令修改：/usr/bin/mysqladmin flush-hosts -h192.168.1.1 -P3308 -uroot -prootpwd;</li>
-<li>备注：<br>　　　　其中端口号，用户名，密码都可以根据需要来添加和修改；<br>　　　　配置有master/slave主从数据库的要把主库和从库都修改一遍的（我就吃了这个亏明明很容易的几条命令结果折腾了大半天）；<br>　　　　第二步也可以在数据库中进行，命令如下：flush hosts;</li>
-</ul>
-</li>
-</ol>
-
+          <p class="article-more-link">
+            <a href="/2018/04/26/MySQL错误解决方案/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -132,7 +116,7 @@
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
 
-        <a data-url="http://test.xxgail.cn/2018/04/26/MySQL错误解决方案/" data-id="cjgfwzpo1000948tasiklh1xk" class="article-share-link">Share</a>
+        <a data-url="http://test.xxgail.cn/2018/04/26/MySQL错误解决方案/" data-id="cjgfx2gcs0009g0tagfr6egtt" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -173,7 +157,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>项目始终是要上线的吧。<br>
+        <p>九块九!一个月只要九块九!买不了吃亏买不了上当。<br>
         
           <p class="article-more-link">
             <a href="/2018/01/25/Linux服务器的购买与使用/#more">Read More</a>
@@ -186,7 +170,7 @@
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器/">服务器</a></li></ul>
 
-        <a data-url="http://test.xxgail.cn/2018/01/25/Linux服务器的购买与使用/" data-id="cjgfwzpo1000348tadxuq0azf" class="article-share-link">Share</a>
+        <a data-url="http://test.xxgail.cn/2018/01/25/Linux服务器的购买与使用/" data-id="cjgfx2gcs0008g0tad5v371u6" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -240,7 +224,7 @@
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/命令行/">命令行</a></li></ul>
 
-        <a data-url="http://test.xxgail.cn/2018/01/22/Linux命令/" data-id="cjgfwzpo1000848tagl3n762t" class="article-share-link">Share</a>
+        <a data-url="http://test.xxgail.cn/2018/01/22/Linux命令/" data-id="cjgfx2gcc0000g0tafigpmgpi" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -294,7 +278,7 @@
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nosql/">nosql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
 
-        <a data-url="http://test.xxgail.cn/2018/01/10/Redis/" data-id="cjgfwzpoh000h48tag7lc4wmf" class="article-share-link">Share</a>
+        <a data-url="http://test.xxgail.cn/2018/01/10/Redis/" data-id="cjgfx2gcs000dg0tarmpz5djx" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -348,7 +332,7 @@
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/app/">app</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件/">软件</a></li></ul>
 
-        <a data-url="http://test.xxgail.cn/2017/12/21/WampServer/" data-id="cjgfwzpoh000c48tasuqp7utn" class="article-share-link">Share</a>
+        <a data-url="http://test.xxgail.cn/2017/12/21/WampServer/" data-id="cjgfx2gcs000hg0ta1xcy4ia5" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -402,7 +386,7 @@
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
 
-        <a data-url="http://test.xxgail.cn/2017/12/21/PHP生成验证码/" data-id="cjgfwzpoh000d48taehagkiqd" class="article-share-link">Share</a>
+        <a data-url="http://test.xxgail.cn/2017/12/21/PHP生成验证码/" data-id="cjgfx2gcs000cg0taofro178f" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -456,61 +440,7 @@
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/摘抄/">摘抄</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书/">读书</a></li></ul>
 
-        <a data-url="http://test.xxgail.cn/2017/11/20/摘-抄/" data-id="cjgfwzpox000y48talt3v3xqh" class="article-share-link">Share</a>
-        
-      </div>
-    </footer>
-  </div>
-  </div>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-ThinkPHP5.0笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <h3 href="/2017/11/20/ThinkPHP5.0笔记/" class="article-date">
-  <time datetime="2017-11-20T08:35:02.000Z" itemprop="datePublished">2017-11-20</time>
-</h3>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/编程/">编程</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/20/ThinkPHP5.0笔记/">ThinkPHP5.0笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://pan.baidu.com/s/1jI1n6Fc" target="_blank" rel="noopener">百度云地址</a><br><a href=""></a><br>
-        
-          <p class="article-more-link">
-            <a href="/2017/11/20/ThinkPHP5.0笔记/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <div class="article-footer-content">
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
-
-        <a data-url="http://test.xxgail.cn/2017/11/20/ThinkPHP5.0笔记/" data-id="cjgfwzpoh000k48tagk7jcbj7" class="article-share-link">Share</a>
+        <a data-url="http://test.xxgail.cn/2017/11/20/摘-抄/" data-id="cjgfx2gd7000ug0tav3yr0g5u" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -564,7 +494,61 @@
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
 
-        <a data-url="http://test.xxgail.cn/2017/11/20/CodeIgniter笔记/" data-id="cjgfwzpo1000148tappjipdas" class="article-share-link">Share</a>
+        <a data-url="http://test.xxgail.cn/2017/11/20/CodeIgniter笔记/" data-id="cjgfx2gcs0006g0ta9nav9clp" class="article-share-link">Share</a>
+        
+      </div>
+    </footer>
+  </div>
+  </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ThinkPHP5.0笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2017/11/20/ThinkPHP5.0笔记/" class="article-date">
+  <time datetime="2017-11-20T08:35:02.000Z" itemprop="datePublished">2017-11-20</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/20/ThinkPHP5.0笔记/">ThinkPHP5.0笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://pan.baidu.com/s/1jI1n6Fc" target="_blank" rel="noopener">百度云地址</a><br><a href=""></a><br>
+        
+          <p class="article-more-link">
+            <a href="/2017/11/20/ThinkPHP5.0笔记/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/框架/">框架</a></li></ul>
+
+        <a data-url="http://test.xxgail.cn/2017/11/20/ThinkPHP5.0笔记/" data-id="cjgfx2gd7000kg0taybyrfry3" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -618,7 +602,7 @@
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
 
-        <a data-url="http://test.xxgail.cn/2017/11/20/Git/" data-id="cjgfwzpo1000748taohl6cfan" class="article-share-link">Share</a>
+        <a data-url="http://test.xxgail.cn/2017/11/20/Git/" data-id="cjgfx2gcc0002g0ta6ahz6ycx" class="article-share-link">Share</a>
         
       </div>
     </footer>
