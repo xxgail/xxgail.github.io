@@ -5,15 +5,19 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   
-  <title>hexo建立博客 | xxGail&#39;s Blogs</title>
+  <title>MySQL错误解决方案 | xxGail&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="hexo建立博客">
-<meta property="og:url" content="http://yoursite.com/2017/11/20/hexo建立博客/index.html">
+  <meta name="description" content="1.MySql Host is blocked because of many connection errors; unblock with ‘mysqladmin flush-hosts’ 解决方法 环境：linux，mysql5.6 软件: Navicat 错误：Host is blocked because of many connection errors; unblock with ‘">
+<meta name="keywords" content="linux,MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL错误解决方案">
+<meta property="og:url" content="http://yoursite.com/2018/04/26/MySQL错误解决方案/index.html">
 <meta property="og:site_name" content="xxGail&#39;s Blogs">
-<meta property="og:updated_time" content="2017-12-21T09:13:01.996Z">
+<meta property="og:description" content="1.MySql Host is blocked because of many connection errors; unblock with ‘mysqladmin flush-hosts’ 解决方法 环境：linux，mysql5.6 软件: Navicat 错误：Host is blocked because of many connection errors; unblock with ‘">
+<meta property="og:updated_time" content="2018-04-26T01:59:11.742Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo建立博客">
+<meta name="twitter:title" content="MySQL错误解决方案">
+<meta name="twitter:description" content="1.MySql Host is blocked because of many connection errors; unblock with ‘mysqladmin flush-hosts’ 解决方法 环境：linux，mysql5.6 软件: Navicat 错误：Host is blocked because of many connection errors; unblock with ‘">
   
   
     <link rel="icon" href="http://ozp0vvyub.bkt.clouddn.com/favicon.ico">
@@ -74,12 +78,16 @@
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-hexo建立博客" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main"><article id="post-MySQL错误解决方案" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <h3 href="/2017/11/20/hexo建立博客/" class="article-date">
-  <time datetime="2017-11-20T05:53:42.000Z" itemprop="datePublished">2017-11-20</time>
+    <h3 href="/2018/04/26/MySQL错误解决方案/" class="article-date">
+  <time datetime="2018-04-26T01:52:37.000Z" itemprop="datePublished">2018-04-26</time>
 </h3>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+  </div>
+
   </div>
   <div class="article-inner">
   <div class="curve-down">
@@ -90,7 +98,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      hexo建立博客
+      MySQL错误解决方案
     </h1>
   
 
@@ -99,13 +107,35 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-        
+        <h2 id="1-MySql-Host-is-blocked-because-of-many-connection-errors-unblock-with-‘mysqladmin-flush-hosts’-解决方法"><a href="#1-MySql-Host-is-blocked-because-of-many-connection-errors-unblock-with-‘mysqladmin-flush-hosts’-解决方法" class="headerlink" title="1.MySql Host is blocked because of many connection errors; unblock with ‘mysqladmin flush-hosts’ 解决方法"></a>1.MySql Host is blocked because of many connection errors; unblock with ‘mysqladmin flush-hosts’ 解决方法</h2><ul>
+<li>环境：linux，mysql5.6</li>
+<li>软件: Navicat</li>
+<li>错误：Host is blocked because of many connection errors; unblock with ‘mysqladmin flush-hosts’</li>
+<li>原因:　同一个ip在短时间内产生太多（超过mysql数据库max_connection_errors的最大值）中断的数据库连接而导致的阻塞；</li>
+<li>解决方法：</li>
+</ul>
+<ol>
+<li>提高允许的max_connection_errors数量（治标不治本）：<ul>
+<li>进入Mysql数据库查看max_connection_errors： show variables like ‘%max_connection_errors%’; </li>
+<li>修改max_connection_errors的数量为1000： set global max_connect_errors = 1000;</li>
+<li>查看是否修改成功：show variables like ‘%max_connection_errors%’;</li>
+</ul>
+</li>
+<li>使用mysqladmin flush-hosts 命令清理一下hosts文件（不知道mysqladmin在哪个目录下可以使用命令查找：whereis mysqladmin）；<ul>
+<li>在查找到的目录下使用命令修改：/usr/bin/mysqladmin flush-hosts -h192.168.1.1 -P3308 -uroot -prootpwd;</li>
+<li>备注：<br>　　　　其中端口号，用户名，密码都可以根据需要来添加和修改；<br>　　　　配置有master/slave主从数据库的要把主库和从库都修改一遍的（我就吃了这个亏明明很容易的几条命令结果折腾了大半天）；<br>　　　　第二步也可以在数据库中进行，命令如下：flush hosts;</li>
+</ul>
+</li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
       <div class="article-footer-content">
         
-        <a data-url="http://yoursite.com/2017/11/20/hexo建立博客/" data-id="cjgfvrd61000no4tansiwe2qn" class="article-share-link">分享到</a>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+        <a data-url="http://yoursite.com/2018/04/26/MySQL错误解决方案/" data-id="cjgfvrd5u000go4taykdvotx1" class="article-share-link">分享到</a>
         
       </div>
     </footer>
@@ -116,15 +146,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/11/20/web前端/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">
-        
-          web前端
-        
-      </div>
-    </a>
   
+    <a href="/2018/01/25/Linux服务器的购买与使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">Linux服务器的购买与使用</div>
+    </a>
   
 </nav>
 
